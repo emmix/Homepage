@@ -1,0 +1,538 @@
+<!DOCTYPE html><html><head>
+      <title>TheIngredientsOfProduct</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/jfeng/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.5.22/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1>The Ingredients of Product</h1>
+<h3 class="mume-header" id="content">Content</h3>
+
+<ul>
+<li><a href="#content">Content</a></li>
+<li><a href="#version">Version</a></li>
+<li><a href="#glossary">Glossary</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#mechanical">Mechanical</a></li>
+<li><a href="#hardware">Hardware</a></li>
+<li><a href="#software">Software</a>
+<ul>
+<li><a href="#properties">Properties</a>
+<ul>
+<li><a href="#essential-difficulties">Essential Difficulties</a></li>
+<li><a href="#accidental-difficulties">Accidental Difficulties</a></li>
+<li><a href="#software-aging">Software Aging</a></li>
+</ul>
+</li>
+<li><a href="#promising-attacks">Promising Attacks</a>
+<ul>
+<li><a href="#buy-versus-build">Buy versus build</a></li>
+<li><a href="#requirements-refinement-and-rapid-prototyping">Requirements refinement and rapid prototyping</a></li>
+<li><a href="#incremental-development">Incremental development</a></li>
+<li><a href="#greate-designer">Greate Designer</a></li>
+<li><a href="#modularity">Modularity</a></li>
+<li><a href="#6d-software-construct">6D Software Construct</a>
+<ul>
+<li><a href="#methodologies">Methodologies</a></li>
+<li><a href="#algorithm">Algorithm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#attitude">Attitude</a></li>
+<li><a href="#example">Example</a>
+<ul>
+<li><a href="#0-d">0-D</a></li>
+<li><a href="#12-d">1/2-D</a></li>
+<li><a href="#3-d">3-D</a></li>
+<li><a href="#4-d">4-D</a></li>
+<li><a href="#5-d">5-D</a></li>
+<li><a href="#6-d">6-D</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h3 class="mume-header" id="version">Version</h3>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Author</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>Jin Feng</td>
+<td>2019.10.04</td>
+<td>Initial Draft</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>Jin Feng</td>
+<td>2019.10.18</td>
+<td>Redraw sketch</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="glossary">Glossary</h3>
+
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IVI</td>
+<td>In-Vehicle Infortainment</td>
+</tr>
+<tr>
+<td>IPC</td>
+<td>Inter-Process Communication</td>
+</tr>
+<tr>
+<td>HU</td>
+<td>Head Unit</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="overview">Overview</h3>
+
+<p>The final IVI product is composed of touchable mechanical, visible hardware, and embedded software. Compared with the others the software is elaborate handiwork, its construction is fully brainwork, still no silver bullet for it. So more emphasis will be put on software.</p>
+<h3 class="mume-header" id="mechanical">Mechanical</h3>
+
+<p>All mechanical parts are in three dimensional space. Contradictions become obvious, omissions can be caught with help of scale drawings of mechanical parts. A geometric reality is captured in a geometric abstraction.</p>
+<img src="./mechanical.jpeg" width="600" height="400">  
+<p><em><strong>Figure 1</strong></em>: The mechanical part of IVI[1]</p>
+<h3 class="mume-header" id="hardware">Hardware</h3>
+
+<p>In 1965, Gordon Moore made a prediction that would set the pace for our modern digital revolution. From careful observation of an emerging trend, Moore extrapolated that computing would dramatically increase in power, and decrease in relative cost, at an exponential pace. The insight, known as Moore&#x2019;s Law, became the golden rule for the electronics industry, and a springboard for innovation.</p>
+<img src="./moorlaw.png" width="600" height="400"> 
+<p><em><strong>Figure 2</strong></em>: Moore&apos;s Law</p>
+<p>The computer hardware(electronic) progress is so fast. No other technology since civilization began has seen six orders of magnitude price-performance gain in 30 years. In no other technology can one choose to take the gain in either improved performance or in reduced costs. These gains flow from the transformation of computer manufacture from an assembly industry into a process industry[2].</p>
+<p><img src="./hardware.jpeg" alt><br>
+<em><strong>Figure 3</strong></em>: The electronical parts of IVI[1]</p>
+<h3 class="mume-header" id="software">Software</h3>
+
+<p>Now numerous products are driving by software, however the software itself construct is still in the primitive peroid.</p>
+<ul>
+<li>
+<p><strong>Handcraft Time</strong>. Software construction is a creative process. Study after study shows that the very best designers produce structures that are faster, smaller, simpler, cleaner, and produced with less effort.</p>
+</li>
+<li>
+<p><strong>No silver bullet</strong>. There is no single development, in either technology or management technique, which by itself promises even one order-of-magnitude improvement within a decade in productivity, in reliability, in simplicity[2].</p>
+</li>
+<li>
+<p><strong>Productivity variations</strong>. These studies revealed large individual differences between high and low performers, often by an order of magnitude.</p>
+</li>
+</ul>
+<h4 class="mume-header" id="properties">Properties</h4>
+
+<p>All software construction involves essential tasks, the fashioning of the complex conceptual structures that compose the abstract software entity, and accidental tasks, the representation of these abstract entities in programming languages and the mapping of these onto machine languages within space and speed constraints[2]. The difficulties of software constuct can be divided into essence and accident.</p>
+<h5 class="mume-header" id="essential-difficulties">Essential Difficulties</h5>
+
+<ul>
+<li><strong>Complexity</strong>. Software entities are more complex for their size than perhaps any other human construct, because no two parts are alike (at least above the statement level). If they are, we make the two similar parts into one, a subroutine, open or closed. In this respect software systems differ profoundly from computers, buildings, or automobiles, where repeated elements abound.</li>
+<li><strong>Conformity</strong>. Software people are not alone in facing complexity. Physics deals with terribly complex objects even at the &quot;fundamental&quot; particle level. The physicist labors on, however, in a firm faith that there are unifying principles to be found, whether in quarks or in unified field theories. Einstein repeatedly argued that there must be simplified explanations of nature, because God is not capricious or arbitrary. No such faith comforts the software engineer.</li>
+<li><strong>Changeability</strong>. The software entity is constantly subject to pressures for change. the software product is embedded in a cultural ma- trix of applications, users, laws, and machine vehicles. These all change continually, and their changes inexorably force change upon the software product.</li>
+<li><strong>Invisibility</strong>. Software is invisible and unvisualizable. The reality of software is not inherently embedded in space. Hence it has no ready geometric representation in the way that land has maps, silicon chips have diagrams, computers have connectivity schematics. In spite of progress in restricting and simplifying the struc- tures of software, they remain inherently unvisualizable, thus depriving the mind of some of its most powerful conceptual tools. This lack not only impedes the process of design within one mind, it severely hinders communication among minds.</li>
+</ul>
+<h5 class="mume-header" id="accidental-difficulties">Accidental Difficulties</h5>
+
+<p>Past Breakthroughs such as high-level languages, time-sharing, unified programming envinroments, objected-oriented programming, artificial intellegence, graphical programming, and e.t.c solved Accidental Difficulties.</p>
+<h5 class="mume-header" id="software-aging">Software Aging</h5>
+
+<p>Programs, like people, get old. We can&apos;t prevent aging, but we can understand its causes, take steps to liit its effects, temporarily reverse some of the damage it has caused, and prepare for the day when the software is no longer viable[3].</p>
+<h4 class="mume-header" id="promising-attacks">Promising Attacks</h4>
+
+<h5 class="mume-header" id="buy-versus-build">Buy versus build</h5>
+
+<p>The most radical possible solution for constructing software is not to construct it at all. Here &quot;Buy versus build&quot; has two meanings, one is to reuse existing modules and components as more as possible internally,  another is buy the mature commercial ones.</p>
+<h5 class="mume-header" id="requirements-refinement-and-rapid-prototyping">Requirements refinement and rapid prototyping</h5>
+
+<p>For the truth is, the clients do not know what they want. Therefore the most important function that software builders do for their clients is the iterative extraction and refinement of the product requirements.</p>
+<h5 class="mume-header" id="incremental-development">Incremental development</h5>
+
+<p>grow, not build, software.</p>
+<h5 class="mume-header" id="greate-designer">Greate Designer</h5>
+
+<p>The central question of how to improve the software art centers, as it always has, on people. Great designers and great managers are both very rare. Most organizations spend considerable effort in finding and cultivating the management prospects; I know of none that spends equal effort in finding and developing the great designers upon whom the technical excellence of the products will ultimately depend. A little retrospection shows that although many fine, useful software systems have been designed by committees and built by multipart projects, those software systems that have excited passionate fans are those that are the products of one or a few designing minds, great designers. Consider Unix, APL, Pascal, Modula, the Smalltalk interface, even Fortran; and contrast with Cobol, PL/I, Algol, MVS/370, and MS-DOS</p>
+<h5 class="mume-header" id="modularity">Modularity</h5>
+
+<p>In  the  journey  to  manage  complexity,  modularity  appears  as  a  crucial  strategy  enabling organizations  to  create  products  and services meeting individual customers&#x2019; needs while still leveraging the benefits of similarity and standardization[5].</p>
+<h5 class="mume-header" id="6d-software-construct">6D Software Construct</h5>
+
+<img src="./6d.png" width="700" height="350">  
+<p><em><strong>Figure 4</strong></em>: The initial draft of 6D software construct</p>
+<h6 class="mume-header" id="methodologies">Methodologies</h6>
+
+<p><strong>Abstract (xyz/space dimension)</strong><br>
+Abstract from top to down, from coase to fine, from outside to inside Recognize the static structure of an object from 3D space.</p>
+<p><strong>Recurse (r dimension)</strong><br>
+From my point of view recursion and fractal are the same in essence. We call this self-simulity fifth dimention which could guide us how to conquer an object.</p>
+<blockquote>
+<p>&#x201C;To see a world in a grain of sand. And a heaven in a wild flower.&#x201D;</p>
+<p align="right"> -- Buddha </p>
+</blockquote>
+<p><strong>Depend (d dimension)</strong><br>
+The interaction forces presented among the particles make a bigger particle with specific functions and characteristics.</p>
+<p><strong>Grow (t dimension)</strong><br>
+Everything has life. The individual is growing, the race is envolving. Know the changes of an object from time dimention.</p>
+<h6 class="mume-header" id="algorithm">Algorithm</h6>
+
+<ol>
+<li>Discretize the static structure<br>
+1.1. Layer<br>
+1.2. Modularize<br>
+1.3. Componentize</li>
+<li>Specify interaction relationship among parts (here a part is layer, or module, or component)</li>
+<li>Continue to divide parts until they are simple to conquer</li>
+<li>Foster parts in each granularity from the primitive to the mature</li>
+</ol>
+<h4 class="mume-header" id="attitude">Attitude</h4>
+
+<p>Since the software is inherently difficult, as a software engineer we should:</p>
+<ul>
+<li>
+<p>Keep humble</p>
+<blockquote>
+<p>Knowledge makes humble, ignorance makes proud.</p>
+<p align="right"> -- ???? </p>
+</blockquote>
+</li>
+<li>
+<p>Keep learning</p>
+<blockquote>
+<p>stay hungary, stay foolish</p>
+<p align="right"> -- Steven Jobs </p>
+</blockquote>
+</li>
+</ul>
+<h4 class="mume-header" id="example">Example</h4>
+
+<p>Let&apos;s take Android system as exmaple and use 6D to Analyze</p>
+<h5 class="mume-header" id="0-d">0-D</h5>
+
+<p>Android is an operating system.<br>
+<img src="./android.png" width="270" height="316"><br>
+<em><strong>Figure 5</strong></em>: The android perspective from 0-D</p>
+<h5 class="mume-header" id="12-d">1/2-D</h5>
+
+<p>The typical three layer overall architecture.<br>
+<img src="./2dandroid.png" width="600" height="600"><br>
+<em><strong>Figure 6</strong></em>: The android perspective from 1/2-D</p>
+<h5 class="mume-header" id="3-d">3-D</h5>
+
+<p>We take AudioFlinger module from Android System Services Layer for example.<br>
+<img src="./3dandroid.jpeg" width="600" height="600"><br>
+<em><strong>Figure 7</strong></em>: The android perspective from 3-D</p>
+<h5 class="mume-header" id="4-d">4-D</h5>
+
+<p>Lots of parts from different layers can be discretized continully, such as memory management from linux kernel.</p>
+<img src="./MemoryManagementLayer.png" width="600" height="300">
+<p><em><strong>Figure 7</strong></em>: The android perspective from 4-D</p>
+<h5 class="mume-header" id="5-d">5-D</h5>
+
+<p>Android grows and envolves quickly<br>
+<img src="./android-key-lime-pie.png" width="1200" height="200"><br>
+<em><strong>Figure 7</strong></em>: The android perspective from 5-D</p>
+<h5 class="mume-header" id="6-d">6-D</h5>
+
+<p>The parts communicate each other via direct calling, IPC, file system, and e.t.c.<br>
+<img src="./iandroid.png" alt><br>
+<em><strong>Figure 8</strong></em>: The android perspective from 6-D</p>
+<h3 class="mume-header" id="conclusion">Conclusion</h3>
+
+<ul>
+<li>The order of difficulies: mechanical &lt; electronic &lt;&lt; software</li>
+<li>Software construction is difficult in essence. No siver bullet now, but several methodoligies are helpful and promising.</li>
+<li>The 6D software construction is proposed initially</li>
+</ul>
+<h3 class="mume-header" id="references">References</h3>
+
+<ol>
+<li><a href="http://www.sohu.com/a/42073902_120865">http://www.sohu.com/a/42073902_120865</a></li>
+<li><a href="https://www.cs.drexel.edu/~yfcai/CS451/RequiredReadings/MythicalManMonth.pdf">https://www.cs.drexel.edu/~yfcai/CS451/RequiredReadings/MythicalManMonth.pdf</a></li>
+<li><a href="https://www.researchgate.net/publication/3560773_Software_aging">https://www.researchgate.net/publication/3560773_Software_aging</a></li>
+<li><a href="https://www.jianshu.com/p/a676d4d959ae">https://www.jianshu.com/p/a676d4d959ae</a></li>
+<li><a href="https://orbit.dtu.dk/en/publications/complexity-management-for-projects-programmes-and-portfolios-an-e">https://orbit.dtu.dk/en/publications/complexity-management-for-projects-programmes-and-portfolios-an-e</a></li>
+</ol>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

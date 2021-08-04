@@ -1,0 +1,3 @@
+/Users/jfeng/Projects/common/engineering/software/common/languages/cpp/deducingType/CMakeFiles/edit_cache.dir
+/Users/jfeng/Projects/common/engineering/software/common/languages/cpp/deducingType/CMakeFiles/rebuild_cache.dir
+/Users/jfeng/Projects/common/engineering/software/common/languages/cpp/deducingType/CMakeFiles/deducingType.exe.dir

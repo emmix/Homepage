@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/jfeng/Projects/common/engineering/software/common/languages/cpp/deducingType/deducingType.cpp
+iostream
+-
+typeinfo
+-
+string
+-
+boost/core/demangle.hpp
+-
+boost/type_index.hpp
+-
+

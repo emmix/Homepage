@@ -140,11 +140,11 @@ The Melvin E. Conway's article How Do Commitees Invent? is valuable for every ar
 
 Here homomorphism is a transformation of one set into another that preserves in the second set the relations between elements of the first.
 
-![](homomorphism.png)
+![](./homomorphism.png)
 
 So this is another study from Microsoft, large scale software teams and how they work on interactions.
 
-![](coordinate.png)
+![](./coordinate.png)
 **Figure**: How engineers mitigate (anticipated) problems with dependencies on other teams.
 
 #### Conclusion
@@ -307,11 +307,11 @@ In last chapter we describe an general elastic template of creating an organizat
 
 
 ## Organizational blocks
-![](OrganizationalStructureVisio.png)
+![](./OrganizationalStructureVisio.png)
 
 
 ## Organizational chart
-![](OrganizationalDiagramVisio.png)
+![](./OrganizationalDiagramVisio.png)
 
 ### Roles' Responsibilities
 TODO: Sales, Product, Engineering, Production, Project Manager (PM), System, System Test, Software Requirements, Software Architecture, Software Integration, Software Test,Development...
@@ -319,7 +319,7 @@ TODO: Sales, Product, Engineering, Production, Project Manager (PM), System, Sys
 ### Create New Groups
 The most groups in organizational structure are gathered based on layers and functions, such as bsp, framework, and application. However some critical functions such as audio are sophisticated, cross-layered, and issue-prone, it is necessary to have a temporal virtual cross-layered group for a specific project or a permanent one. Let's take audio as an example to show how to build up a new group.
 
-![](organizationalstructure.png)
+![](./organizationalstructure.png)
 
 1. Firstly the audio functions and its developments scatter among bsp, framework, and application. We call application.audio, framework.audio, and bsp.audio respectively.
 2. Extract the audio parts from layer level to form audio group called dev.audio in development level. Now all the development works related to audio shall be covevered by audio group.
