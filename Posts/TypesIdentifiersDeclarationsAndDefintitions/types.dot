@@ -1,0 +1,22 @@
+
+digraph G {
+    rankdir=LR;
+    
+    "integral types" -> "boolean(bool)"
+    "integral types" -> "character(char, wchar_t...)"
+    "integral types" -> "integer types(int, long long...)"
+
+    "arithmetic types" -> "integral types"
+    "arithmetic types" -> "floating-point types(double, long double...)"
+
+    "built-in types" -> "arithmetic types"
+    "built-in types" -> "pointer types (int*...)"
+    "built-in types" -> "reference types(double&...)"
+    "built-in types" -> "void"
+    "built-in types" -> "function types"
+    "built-in types" -> "array types(char[]...)"
+
+    "user-defined types" -> "enumerations"
+    "user-defined types" -> "classes"
+    "user-defined types" -> "struct"
+}
