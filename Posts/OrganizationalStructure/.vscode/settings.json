@@ -1,0 +1,9 @@
+{
+    "markdown-preview-enhanced.usePandocParser": true,
+    "markdown-preview-enhanced.enableCriticMarkupSyntax": true,
+    "markdown-preview-enhanced.enableExtendedTableSyntax": true,
+    "markdown-preview-enhanced.enableHTML5Embed": true,
+    "markdown-preview-enhanced.enableScriptExecution": true,
+    "markdown-preview-enhanced.enableTypographer": true,
+    "markdown-preview-enhanced.frontMatterRenderingOption": "table"
+}

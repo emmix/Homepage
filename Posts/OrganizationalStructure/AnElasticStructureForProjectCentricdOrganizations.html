@@ -1,0 +1,1049 @@
+<!DOCTYPE html><html><head>
+      <title>AnElasticStructureForProjectCentricdOrganizations</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\FEJ4SZH\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.22\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1>An Elastic Organizational Structure for Project-Centric Enterprises</h1>
+<h1 class="mume-header" id="content">Content</h1>
+
+<ul>
+<li><a href="#content">Content</a></li>
+<li><a href="#version">Version</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#motives">Motives</a></li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#theories">Theories</a>
+<ul>
+<li><a href="#dunbars-number">Dunbar&apos;s number</a>
+<ul>
+<li><a href="#content-1">Content</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#divide-and-conquer">Divide-and-Conquer</a>
+<ul>
+<li><a href="#content-2">Content</a></li>
+<li><a href="#conclusion-1">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#snafu">SNAFU</a>
+<ul>
+<li><a href="#content-3">Content</a></li>
+<li><a href="#conclusion-2">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#conways-law">Conway&apos;s Law</a>
+<ul>
+<li><a href="#conways-first-law">Conway&apos;s (First) Law</a>
+<ul>
+<li><a href="#communication-dictates-design">Communication Dictates Design</a></li>
+<li><a href="#conclusion-3">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#second-law">Second Law</a>
+<ul>
+<li><a href="#doing-it-over">Doing it Over</a></li>
+<li><a href="#conclusion-4">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#third-law">Third Law</a>
+<ul>
+<li><a href="#homomorphism">Homomorphism</a></li>
+<li><a href="#conclusion-5">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#forth-law">Forth Law</a>
+<ul>
+<li><a href="#deintegration">Deintegration</a></li>
+<li><a href="#conclusion-6">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#brooks-statement">Brooks&apos; statement</a>
+<ul>
+<li><a href="#first-statement">First statement</a>
+<ul>
+<li><a href="#content-4">Content</a></li>
+<li><a href="#conclusion-7">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#second-statement">Second statement</a>
+<ul>
+<li><a href="#the-mythical-man-month">The mythical man-month</a></li>
+<li><a href="#conclusion-8">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#metastructurizing">Metastructurizing</a>
+<ul>
+<li><a href="#set">Set</a></li>
+<li><a href="#task">Task</a></li>
+<li><a href="#hierachy">Hierachy</a>
+<ul>
+<li><a href="#grouphiii">Group(Hiii)</a></li>
+<li><a href="#departmenthii">Department(Hii)</a></li>
+<li><a href="#devisionhi">Devision(Hi)</a></li>
+</ul>
+</li>
+<li><a href="#communication">Communication</a></li>
+<li><a href="#process">Process</a></li>
+</ul>
+</li>
+<li><a href="#instance">Instance</a>
+<ul>
+<li><a href="#organizational-blocks">Organizational blocks</a></li>
+<li><a href="#organizational-chart">Organizational chart</a>
+<ul>
+<li><a href="#roles-responsibilities">Roles&apos; Responsibilities</a></li>
+<li><a href="#create-new-groups">Create New Groups</a></li>
+</ul>
+</li>
+<li><a href="#process-1">Process</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#physical-containers">Physical Containers</a></li>
+</ul>
+</li>
+<li><a href="#conclusion-9">Conclusion</a></li>
+<li><a href="#glossary">Glossary</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h1 class="mume-header" id="version">Version</h1>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Author</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>Jin Feng</td>
+<td>2019.07.14</td>
+<td>Initial Draft</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>Jin Feng</td>
+<td>2020.01.19</td>
+<td>Update structural diagram</td>
+</tr>
+<tr>
+<td>0.9</td>
+<td>Jin Feng</td>
+<td>2020.01.27</td>
+<td>Complete the template, Project&apos;s lifecycle, and sort out the whole</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>Jin Feng</td>
+<td>2020.01.28</td>
+<td>Add the physical containers</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>Jin Feng</td>
+<td>2021.07.17</td>
+<td>Add new organizational structure block diagram and the organizational chart, and adjust this paper&apos;s structure.</td>
+</tr>
+</tbody>
+</table>
+<h1 class="mume-header" id="overview">Overview</h1>
+
+<p>We are facing lots of challenges from product developments. Per Convey&apos;s law, the organization&apos;s communication structure dictates the software design, so here we are trying to tackle these challenges with an elastic organizational structure. In this article we propose an elastic organizational structure for project-Centric organizations to suit varieties of products, to improve efficiencies, and to maximize the resource usages.</p>
+<p>Before preceeding, I would like to give you the definitions of product, project, and project-centric organization used in this article.</p>
+<ul>
+<li>A product is an invisible software artifact or the combination of mechanical and hardware with embedded software.</li>
+<li>A project is a managed intellectual activity to develop a product.</li>
+<li>The project-centric organization revolves around the concept that a group of individual or firms join together with the explicit purpose of producing a tangible set of outputs that can be physical (e.g. hardware device) or logical (e.g. software code)<sup>[21]</sup></li>
+</ul>
+<h1 class="mume-header" id="motives">Motives</h1>
+
+<p>The characteristics of software and the difficulties merged during project activities motivate us to desgin an more effective organizational structure to alleviate the pain. The actual situations we are facing are:</p>
+<ul>
+<li>The requirements, designs, and implementations could be change</li>
+<li>A considerable number of kinds of projects could run in parallel. These projects could be mass productions, demos, PoC, pre-development, internal, external, only applications, whole platform, e.t.c</li>
+<li>Varieties of products emerge and disappear rapidly</li>
+<li>Some projects could involve in hardware, bsp, framework, application and backend. Some might be only software components</li>
+<li>The product type of project-centric enterprises shall not be limited (such as only IVI and VX2)</li>
+<li>Unlike the production workers, it is not easy to recruit qualified software engineers on demand, however the employees&apos; utilization rate has peak and trough.</li>
+<li>Some employees in some projects are busy, others might be leisure.</li>
+<li>The skills, knowledge, and some software components are hardly shared among different of products (such as IVI, display, TBox, and ADAS). Actually they have lots of commons from perstectives of software engineering.</li>
+<li>Developers are valuable assets, also all-rounders and specialists are rare. Since it is hard to employ many technical aces to be worth a ten, division of labor on the basis of specialization is better choice.  Assigning specific functions to a junior one, and let he or she be an expert in this specialized area. Fusing these ordinary engineers who is only expert in some modules can let engineering department be an unified expert from the view of external side.</li>
+<li>Relatively High staff turnover</li>
+<li>The software components are re-developed again and again in different projects or for different products</li>
+<li>Intensive internal or external communications</li>
+<li>Pass the buck</li>
+<li>Response is not quick enough</li>
+<li>The work scope is not clear. If let it be, some modules will be dragged, communication cost will increase, dispute will occur, chaos will follow, and project will be delayed. Europe has &#x201D;The Empire was killed by iron nails&#x201D;, and we have &quot;A small leak will sink a great ship&quot;. So it is really necessary and critical to have a clear and definitive technical work scope and module assignments.</li>
+</ul>
+<h1 class="mume-header" id="objectives">Objectives</h1>
+
+<p>Here we list the properties the desired structures should have.</p>
+<ul>
+<li>Flexible for changes<sup>[1]</sup> and varieties of products</li>
+<li>Scalable for different organization size</li>
+<li>Can run varieties of projects or products in parallel</li>
+<li>Decouple the organizational structure from products and business</li>
+<li>Every component or a combination of several components can be product and profitable</li>
+<li>The resources especial human resources shall be shared</li>
+<li>The skills, knowledge, source code shall be deposited, iterated, and shared among kinds of products or projects</li>
+<li>The division of work shall be clear-cut, each one being charged with specific responsibilities.</li>
+<li>The talents pool shall be big enough and like a spindle to resist the high turnover</li>
+<li>The company&apos;s growth is driven not only by sales and market but also by the competence of engineering</li>
+<li>The common software components shall be abstracted, reused and evolved alongside the kinds of projects and products.</li>
+<li>The project manager is central and necessary whatever the project it is</li>
+</ul>
+<p>These attributes above are against the problems listed in motives section.</p>
+<h1 class="mume-header" id="theories">Theories</h1>
+
+<p>Before diving into the detailes of organizational structures, let us review some laws, rules, principles, and software hierarchy which will guide the design of this organizational structure.</p>
+<h2 class="mume-header" id="dunbars-number">Dunbar&apos;s number</h2>
+
+<h3 class="mume-header" id="content-1">Content</h3>
+
+<blockquote>
+<p>A measurement of the &quot;cognitive limit to the number of individuals with whom any one person can maintain stable relationships.&quot;</p>
+<ul>
+<li>Intimate Friends: 5</li>
+<li>Trusted Friends: 15</li>
+<li>Close Friends: 35</li>
+<li>Casual Friends: 150</li>
+</ul>
+<p align="right"> Robin Dunbar, 1992 </p>
+</blockquote>
+<h3 class="mume-header" id="conclusion">Conclusion</h3>
+
+<p>Limit your team member&#x3002;</p>
+<h2 class="mume-header" id="divide-and-conquer">Divide-and-Conquer</h2>
+
+<h3 class="mume-header" id="content-2">Content</h3>
+
+<blockquote>
+<p>Break problem into several suproblems that are similar to the original problem but smaller in size, solve the subproblems recursively, and then combine these solution to create a solution to the roginal problem<sup>[29]</sup>.</p>
+<p align="right"> Introduction to Algorithms, 2003 </p>
+</blockquote>
+<h3 class="mume-header" id="conclusion-1">Conclusion</h3>
+
+<ul>
+<li>Break big organization into divisions</li>
+<li>Break big project into packages</li>
+<li>Break big product into components</li>
+<li>The architects of organization, project, and product are necessary, who are responsible for breaking into and combine</li>
+</ul>
+<h2 class="mume-header" id="snafu">SNAFU</h2>
+
+<h3 class="mume-header" id="content-3">Content</h3>
+
+<blockquote>
+<p>Situation Normal, All Fucked Up<sup>[11]</sup>.</p>
+<p align="right"> A Military Acronym, Word War Two</p>
+</blockquote>
+<p>In its simplest form, it states that communication is only possible between equals. In a hierarchy, people inevitably distort the truth when dealing with their superiors, in order to curry favor or escape punishment. As a consequence, said superiors operate from an increasingly distorted view of the world, resulting in bad decisions. SNAFU itself is a military acronym for &quot;Situation Normal, All Fucked Up&quot;. This is sometimes sanitized for innocent civilians as &quot;situation normal, all fouled up&quot;<sup>[11]</sup>.</p>
+<h3 class="mume-header" id="conclusion-2">Conclusion</h3>
+
+<ul>
+<li>This principle indicates that a flat organizational chart is better. Keep the organization hierarchical layers as less as possible.</li>
+<li>Direct communication is preferable</li>
+</ul>
+<h2 class="mume-header" id="conways-law">Conway&apos;s Law</h2>
+
+<p>The Melvin E. Conway&apos;s article How Do Commitees Invent? is valuable for every architect even if it was published in 1968, half century ago.</p>
+<h3 class="mume-header" id="conways-first-law">Conway&apos;s (First) Law</h3>
+
+<h4 class="mume-header" id="communication-dictates-design">Communication Dictates Design</h4>
+
+<blockquote>
+<p>Any organization that designs a system (defined more broadly here than just information systems) will inevitably produce a design whose structure is a copy of the organization&apos;s communication structure<sup>[1]</sup>.</p>
+<p align="right"> Mel Conway, 1967</p>
+</blockquote>
+<h4 class="mume-header" id="conclusion-3">Conclusion</h4>
+
+<ul>
+<li>Because the design that occurs first is almost never the best possible, the prevailing system concept may need to change. Therefore, flexibility of organization is important to effective design<sup>[1]</sup>.</li>
+<li>Conway&#x2019;s (first) Law tells us team size is important so...Make the teams as small as necessary.
+<ul>
+<li><em>Assesment:</em> If you don&#x2019;t have a personal relationship with every member of your team, your team is probably too big.</li>
+<li><em>Guidance:</em> Aim for team size of &#x201C;Dunbar level 1&#x201D; (5), possibly &#x201C;Dunbar level 2&#x201D; (15).</li>
+</ul>
+</li>
+<li>Actively manage communications within the teams and across teams</li>
+<li>Reduce effort required to locate and interact with the &quot;right people&quot;</li>
+<li>Increase communications
+<ul>
+<li>Real-time chat tools</li>
+<li>Video Conferencing</li>
+<li>Online forums/news groups</li>
+<li>Wiki and web sites</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="second-law">Second Law</h3>
+
+<h4 class="mume-header" id="doing-it-over">Doing it Over</h4>
+
+<blockquote>
+<p>&quot;There is never enough time to do something right, but there is always enough time to do it over<sup>[1]</sup>.&quot;</p>
+<p align="right"> Mel Conway, 1967</p>
+</blockquote>
+<h4 class="mume-header" id="conclusion-4">Conclusion</h4>
+
+<ul>
+<li>Conway&#x2019;s Second Law tells us problem size is important so...Make the solution as small as necessary.
+<ul>
+<li><em>Assessment:</em> If you (or your team) cannot explain all the code in your release package, your release is too large</li>
+<li><em>Guidance:</em> Execute many small releases instead of a few large releases.</li>
+</ul>
+</li>
+<li>Support continuous process
+<ul>
+<li>Implement small changes</li>
+<li>Test immediately</li>
+<li>Deploy constantly</li>
+</ul>
+</li>
+<li>Shorten the feedback loop as much as possbile</li>
+</ul>
+<h3 class="mume-header" id="third-law">Third Law</h3>
+
+<h4 class="mume-header" id="homomorphism">Homomorphism</h4>
+
+<blockquote>
+<p>There is a homomorphism from the linear graph of a system to the linear graph of its design organization<sup>[1]</sup>.</p>
+<p align="right"> Mel Conway, 1967</p>
+</blockquote>
+<p>Here homomorphism is a transformation of one set into another that preserves in the second set the relations between elements of the first.</p>
+<p><img src="homomorphism.png" alt></p>
+<p>So this is another study from Microsoft, large scale software teams and how they work on interactions.</p>
+<p><img src="coordinate.png" alt><br>
+<strong>Figure</strong>: How engineers mitigate (anticipated) problems with dependencies on other teams.</p>
+<h4 class="mume-header" id="conclusion-5">Conclusion</h4>
+
+<ul>
+<li>Conway&#x2019;s Third Law tells us cross-team independence is important. So make each team fully independent. If you have to hold a release until some other team is ready, you are not an independent team <sup>[15]</sup>.</li>
+<li>Organize your teams in order to achieve desired system.</li>
+<li>Organize teams by product or BU
+<ul>
+<li>Combine design, develop, test, and deploy</li>
+<li>Include storage, business process, and UI</li>
+<li>Allow team autonomy within their boundary</li>
+<li>Require team to inter-operate, not integrate</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="forth-law">Forth Law</h3>
+
+<h4 class="mume-header" id="deintegration">Deintegration</h4>
+
+<blockquote>
+<p>The structures of large systems tend to disintegrate during development, qualitatively more so than with small systems<sup>[1]</sup>.</p>
+<p align="right"> Mel Conway, 1967</p>
+</blockquote>
+<p>Three reasons disintegration occurs.</p>
+<ol>
+<li>The realization that the system will be large, together with organization pressures, make irresistible the temptation to assign too many people to a design effort.</li>
+<li>Application of the conventional wisdom of management to a large design organization causes its communication structure to disintegrate.</li>
+<li>Homomorphism insures that the structure of the system will reflect the disintegration which has occurred in the design organization.</li>
+</ol>
+<p>The Standish Group Chaos Report<sup>[18]</sup> confirms the Conway&apos;s forth law. C1 to C5 complexity across the top, size from S1 to S5 down the bottom, you can see once you get into high complexity high size the failure rate is astronomical, the opportunity for failure just increases exponentially.<br>
+<img src="./sizeComplexity.jpg" alt></p>
+<h4 class="mume-header" id="conclusion-6">Conclusion</h4>
+
+<ul>
+<li>Time is against large teams. So make release cycles short and small.
+<ul>
+<li><em>Assesment:</em> If your release dates are often missed, your scope is too big.</li>
+<li><em>Guidance:</em> Aim for a scope that supports a release cycle of two weeks or less</li>
+</ul>
+</li>
+<li>Make the team as small as necessary
+<ul>
+<li>Resist urge to grow teams in response to deadlines</li>
+<li>Consider Dunbar&apos;s group when sizing team</li>
+<li>Be prepared to break into smaller teams</li>
+</ul>
+</li>
+<li>Make the system as small as necessary
+<ul>
+<li>Be parepared to break into smaller systems for smaller teams</li>
+<li>Architects are necessary to achive the conceptual integirty while break down the system.</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="brooks-statement">Brooks&apos; statement</h2>
+
+<h3 class="mume-header" id="first-statement">First statement</h3>
+
+<h4 class="mume-header" id="content-4">Content</h4>
+
+<blockquote>
+<p>Product quality is strongely effected by organization structure <sup>[22][28]</sup></p>
+<p align="right"> Frederick P. Brooks, 1995</p>
+</blockquote>
+<h4 class="mume-header" id="conclusion-7">Conclusion</h4>
+
+<p>It is beneficial to obtain early estimates of software quality (e.g. failure-proneness) to help inform decisions on testing, code inspections, design rework, as well as financial costs associated with a delayed releasesup<sup>[22]</sup>.</p>
+<h3 class="mume-header" id="second-statement">Second statement</h3>
+
+<h4 class="mume-header" id="the-mythical-man-month">The mythical man-month</h4>
+
+<blockquote>
+<p>Adding manpower to a late software project makes it latter</p>
+<p>Intercommunication formula: n(n-1)/2<br>
+5*(5-1)/2     = 10<br>
+15*(15-1)/2   = 105<br>
+50*(50-1)/2   = 1,225<br>
+150(150-1)/2  = 11,175</p>
+<p align="right"> Fred Books, 1975</p>
+</blockquote>
+<p>Since software construction is inherently a systems effort --- an exercise in complex interrelationships---communication effort is great, and it quickly dominates the decrease in individual task time brought about by partitioning. Adding more men then lengthens, not shortens, the schedule.</p>
+<h4 class="mume-header" id="conclusion-8">Conclusion</h4>
+
+<p>The number of months of a project depends upon its sequential constraints. The maximum number of men depends upon the number of independent subtasks. From these two quantities one can derive schedules using fewer men and more months.</p>
+<h1 class="mume-header" id="metastructurizing">Metastructurizing</h1>
+
+<p>Structurizing that maniputes general organizational structures, such as group, division, and department, is called metastructurizing. Based on the laws above, we would like to propose an abstracted organizational structure template for general enterprises, especially software-based.</p>
+<h2 class="mume-header" id="set">Set</h2>
+
+<p>As we know the organization is a human group actually. Some rules from sociology can guide our design:</p>
+<ul>
+<li>The R&amp;D hierachical number of management layers should be less, beteer no more than 3 according to SAFU<sup>[11]</sup></li>
+<li>The direct subordinates should be kept samall and better no more than 9 members in terms of Dunbar&apos;s number <sup>[9]</sup></li>
+<li>Divide and conquer</li>
+</ul>
+<p>With the guidance of above rules, here we show the general hierarchical layers and conrressponding  descriptions. Suppose each set can have <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">10</span></span></span></span> members at most, in theory the organizations with three hierarchical height can contain <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mo>&#xD7;</mo><mn>10</mn><mo>&#xD7;</mo><mn>10</mn><mo>=</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">10\times10\times10 = 1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1000</span></span></span></span> members at most.</p>
+<p><img src="./hierachy.png" alt></p>
+<p>Here we call <em>Hi, Hii, and Hii</em> a set. The properties of a Set:</p>
+<ul>
+<li>A set is your small family of people having &#x2018;similar skills&#x2019; and working within the same general &#x2018;competency area&#x2019;. There are sets which are also known as the specialists</li>
+<li>Sets can be nested, and a compound set could contain other sets. The nesting level shall be as less as possible, no more than 4.</li>
+<li>The purposes of set are skills and knowledge sharing, routine management, artifacts evolving and reusing.</li>
+<li>The number of members in a set shall be less than 15</li>
+</ul>
+<p>The Ingredients of a set:</p>
+<ul>
+<li>Set Lead
+<ul>
+<li>Manages the members and support them in personal growths and specific challenages.</li>
+<li>Is a set member too</li>
+<li>Represent a set in some level</li>
+<li>An interface of a set</li>
+</ul>
+</li>
+<li>Members
+<ul>
+<li>A member can be an individual person or a set which is represented by its set lead</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="task">Task</h2>
+
+<p>A task is an input to a set, which has requirements and expected output.</p>
+<ul>
+<li>A task can be from set internal and external.</li>
+<li>All set members, or several could process a task.</li>
+</ul>
+<p>Now the question is that how to self-coordinate set&#x2019;s members to process task. We use &#x201C;divide and conquer&#x201D; and virtual team methodologies to process a task generally. A virtual team consists of all the involved members from different sets to complete the task.</p>
+<p><img src="./processTask.png" alt></p>
+<p>A virtual team consists of all the involved members from different sets to complete the task.</p>
+<h2 class="mume-header" id="hierachy">Hierachy</h2>
+
+<h3 class="mume-header" id="grouphiii">Group(Hiii)</h3>
+
+<p>A group is a combat unit which is focus on one or several similar  tight coupled functions. Its members includes</p>
+<ul>
+<li>GL (group leader): Management, planning, interface, internal architecture, coding and review, bug fix, and CoC.</li>
+<li>Developers: coding, bug fix, testing, and e.t.c.</li>
+</ul>
+<p>The member number of a group shall be no more than 10. The essence of this organizational structure is modular which is represented with form of group which is botom-down set. A group:</p>
+<ul>
+<li>is an aggregate of individuals who are cohesive works</li>
+<li>can be a functional  (such as BT group), or technical unit (BSP group), or management unit (such as PM group).</li>
+<li>is a combat team</li>
+<li>could be a profit unit</li>
+<li>is spindle shape to resist turnover</li>
+<li>is a place to deposit  knowledge and skills of both technique and management.</li>
+<li>is an area to evolve reusable components for kinds of products and to implement COC (center of competence)</li>
+</ul>
+<p>To setup so highly efficient group you can refer to the chapter 3 &quot;A Surgical Team&quot; of the book called &quot;The Mythical Man-Month&quot;.  The surgeon shall be backed up for leaving.</p>
+<p>Since we are creating a general organizational structure for all kinds of compnayies, <em>IVI Tire One</em> which covers mechanical, hardware, full software stacks(bsp, framework, applications, backend), and manufacturing is one of them. We need to utilize the advanteges of different kinds of groups which are functional groups, cross-functional groups, and special forced virtual groups.</p>
+<ul>
+<li>Functional Groups: such as bsp group which is good for knowledge sharing</li>
+<li>Cross-functional Groups<sup>[20]</sup> such as audio team which crosses requirements, architects, project management, testing, dsp, bsp, framework, and applications</li>
+<li>Virtual Groups: these kinds of groups are only exist during projects for special forces.</li>
+</ul>
+<h3 class="mume-header" id="departmenthii">Department(Hii)</h3>
+
+<p>The purpose of department is to combine several groups for easy management. It members includes</p>
+<ul>
+<li>Manager: Management, coordination,</li>
+<li>Group leaders</li>
+</ul>
+<p>Similarly the number of a department shall be no more than ten.</p>
+<h3 class="mume-header" id="devisionhi">Devision(Hi)</h3>
+
+<p>The purpose of devision is to combine several departments for easy management. It members includes</p>
+<ul>
+<li>Director: Management, coordination, and direction</li>
+<li>Managers</li>
+</ul>
+<p>Similarly the number of a devision shall be no more than ten</p>
+<h2 class="mume-header" id="communication">Communication</h2>
+
+<p>A strand of these scholars is particularly interested in the relation between product and organizational modularity identifying the following relation: &#x201C;Integral products should be developed by integral organizations (tightly connected organizational units to maximize ease of communication and minimize the risk of opportunism). Modular products should be developed by autonomous, loosely coupled, easily reconfigurable organizations. Indeed, the adoption of standards reduces the level of asset specificity (Argyres,1999) and, in turn, the need to exercise managerial authority. Product modularity also reduces the need for communication due to information hiding, whereby knowledge about the &#x2018;interior&#x2019; of each module does not need to be shared.&#x201D;<sup>[21]</sup>.</p>
+<p>Besides the vertical communication in hierachical organization and peer-to-peer communication in network organization, such as loose team distributed in different locations for some open source project, there is a new one called connected communication which is from the coonnected organization the blend of hierachical and network structures.</p>
+<p>The connected organization is the blend of hierachical and network structures.<br>
+<img src="./connectedOrganization.png" alt></p>
+<h2 class="mume-header" id="process">Process</h2>
+
+<p>There are many kinds of processes not only from the international or industrial or regiognal standards organization but also from companny internals. Also lots of frameworks for developing, delivering, and sustaning complex products, such as waterfall, scrum, and SAFe. As a project-centric company I would say</p>
+<ul>
+<li>Mandatory standards requested by regulations or customers shall be complied with</li>
+<li>Keep the internal own-defined process as simple as possible</li>
+<li>Take each output as a product which is developed via project managed by project manager.</li>
+</ul>
+<h1 class="mume-header" id="instance">Instance</h1>
+
+<p>In last chapter we describe an general elastic template of creating an organizational structure. Now An concrete example for the companies which produce in-vehicle infortainments, instrument clusters, display, IMS, and other products with both hardware and software instatiated from template will be given. Before unveiling, please review the static structure of product described in The Ingredients of Product<sup>[27]</sup> article and the ASPICE project life cycle<sup>[30]</sup>.</p>
+<h2 class="mume-header" id="organizational-blocks">Organizational blocks</h2>
+
+<p><img src="OrganizationalStructureVisio.png" alt></p>
+<h2 class="mume-header" id="organizational-chart">Organizational chart</h2>
+
+<p><img src="OrganizationalDiagramVisio.png" alt></p>
+<h3 class="mume-header" id="roles-responsibilities">Roles&apos; Responsibilities</h3>
+
+<p>TODO: Sales, Product, Engineering, Production, Project Manager (PM), System, System Test, Software Requirements, Software Architecture, Software Integration, Software Test,Development...</p>
+<h3 class="mume-header" id="create-new-groups">Create New Groups</h3>
+
+<p>The most groups in organizational structure are gathered based on layers and functions, such as bsp, framework, and application. However some critical functions such as audio are sophisticated, cross-layered, and issue-prone, it is necessary to have a temporal virtual cross-layered group for a specific project or a permanent one. Let&apos;s take audio as an example to show how to build up a new group.</p>
+<p><img src="organizationalstructure.png" alt></p>
+<ol>
+<li>Firstly the audio functions and its developments scatter among bsp, framework, and application. We call application.audio, framework.audio, and bsp.audio respectively.</li>
+<li>Extract the audio parts from layer level to form audio group called dev.audio in development level. Now all the development works related to audio shall be covevered by audio group.</li>
+<li>If the dev.audio is not enough, we continue extract the audio parts of architecture, requirements, software project management, software testing, and integration to form software level audio called software.audio. Now all the software activites related to audio shall be done by software.audio.</li>
+<li>The steps can be continued to form engineering.audio and org.audio if it is necessary</li>
+</ol>
+<h2 class="mume-header" id="process-1">Process</h2>
+
+<p>We take every outputs of activities such as PoC, demo, pre-development as product whatever the maturity degree.</p>
+<ul>
+<li>Each product shall be managed by project manager.</li>
+<li>A product is produced via assembling the outputs of groups.</li>
+<li>A project is the collaboration among groups coordinated by project manager.</li>
+</ul>
+<h2 class="mume-header" id="products">Products</h2>
+
+<p>In theory we can take the output of a group or combination of outputs from several groups as a product. Thus theoratically the number of products is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo stretchy="false">(</mo><msup><mn>2</mn><mi>n</mi></msup><mo>=</mo><msubsup><mi>C</mi><mi>n</mi><mn>0</mn></msubsup><mo>+</mo><msubsup><mi>C</mi><mi>n</mi><mn>1</mn></msubsup><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><msubsup><mi>C</mi><mi>n</mi><mi>n</mi></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2^n (2^n =C^0_n+C^1_n +...+C^n_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.061108em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.061108em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">...</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>. Based on this thinking,  we can get the conclusions:</p>
+<ul>
+<li>The products list can extend intensively for sales.</li>
+<li>The employees&apos; utilization rate trough can be compensated by massive products</li>
+</ul>
+<p>Now we can pick some promising products from outputs of groups:</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Outputs of Groups</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HU</td>
+<td>All</td>
+<td>Whole IVI product</td>
+</tr>
+<tr>
+<td>V2X</td>
+<td>All</td>
+<td>Whole V2X product</td>
+</tr>
+<tr>
+<td>IMS</td>
+<td>All</td>
+<td>Whole IMS product</td>
+</tr>
+<tr>
+<td>Security Solution</td>
+<td>Security</td>
+<td>Concept, architecture, components, consultancy, certification, and test</td>
+</tr>
+<tr>
+<td>Safety Solution</td>
+<td>Safety</td>
+<td>Concept, architecture, consultancy, and certification</td>
+</tr>
+<tr>
+<td>SAL</td>
+<td>SAL</td>
+<td>Carplay, Carlife, Android Auto</td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>Audio</td>
+<td>Audio Implementation, Audio Tuning</td>
+</tr>
+<tr>
+<td>OTA</td>
+<td>OTA</td>
+<td>OTA client, protocol, cloud setup and maintain</td>
+</tr>
+<tr>
+<td>BSP/Framework/APP Dev</td>
+<td>BSP/Framework/App</td>
+<td>Outsource BSP development</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="physical-containers">Physical Containers</h2>
+
+<p>A suitable container, here is folder, is necessary to match the organizational structure and to accommodate the projects, documents, source code, and COC.</p>
+<pre data-role="codeBlock" data-info="c++" class="language-cpp">Projects
+  Common <span class="token comment">// the common project of all products</span>
+    Common <span class="token comment">// the common part of this level</span>
+    Product
+    ProjectManagement
+      Common <span class="token comment">// the common part of this level</span>
+      CustomerProjectManagement
+      TechnicalProjectManagement
+      Quality
+      Process
+    Engineering
+      Common <span class="token comment">// the common part of this level</span>
+      System
+      Mechanical
+      Hardware
+      Software
+        Common <span class="token comment">// the common part of software level</span>
+        SwRequriement
+        SwArchitecture
+        Application
+        Framework
+        Bsp
+        Mcu
+        Audio
+        Security
+      Ims
+      Safety  
+    Production
+    Infrastructure
+    HumanResource
+    Sales
+    Purchasing
+  Ivi
+    Common <span class="token comment">// The common project of Ivi product</span>
+    Saicrx5 <span class="token comment">// same as Procects/Common </span>
+    GwmIhuV3<span class="token punctuation">.</span><span class="token number">5</span> <span class="token comment">// same as Projects/Common</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  V2x
+    Common <span class="token comment">// The common project of Ivi product</span>
+    GwmA55 <span class="token comment">// same as Procects/Common </span>
+    FordD31 <span class="token comment">// same as Projects/Common</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  Adas
+    Common <span class="token comment">// The common project of Ivi product</span>
+    GeelyB33 <span class="token comment">// same as Procects/Common </span>
+    SvwA21 <span class="token comment">// same as Projects/Common</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</pre><p>To make containers in order and knowledge, skills, techniques, components shared and reused, we use the <em>Abstraction Mechanism</em> from C++.</p>
+<ul>
+<li><em><strong>Common</strong></em> is base forder (base class) which is a place to contain the common parts of the level in which the common is. Such as:
+<ul>
+<li>Projects/Common: the common parts for all products</li>
+<li>Projects/Engineering/Software/Common: the common parts of software which can be shared and used in all products</li>
+<li>Projects/Ivi/Common: the common parts of ivi product</li>
+<li>Projects/V2x/Common: the common parts of v2x product</li>
+<li>Projects/Adas/common: the common parts of adas product</li>
+</ul>
+</li>
+<li><em><strong>Project Folder</strong></em> is project specific folder (concret class) which is a place to contain proprietary parts of project. Please note the project specific contents can be abstracted and moved into the <em>Projects/xxx/common</em> folder or <em>projects/common</em> folder if they can be shared in specific product or in all products. For example
+<ul>
+<li>Projects/Ivi/SaicRx5: the project specific folder for the project &quot;<em>SaicRx5</em>&quot; of ivi product.</li>
+<li>Projects/V2x/GwmA55: the Project specific folder for the project &quot;<em>GwmA55</em>&quot; of vx2 product.</li>
+</ul>
+</li>
+</ul>
+<p>With time going by, the shared knowledge, skills, techniques, components, process, and e.t.c. will be deposited in common folder, which can be shared and reused in kinds of projects and varieties of products. That is the essences of COC.</p>
+<h1 class="mume-header" id="conclusion-9">Conclusion</h1>
+
+<p>TODO</p>
+<h1 class="mume-header" id="glossary">Glossary</h1>
+
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IVI</td>
+<td>In-Vehicle Infortainment</td>
+</tr>
+<tr>
+<td>IPC</td>
+<td>Inter-Process Communication</td>
+</tr>
+<tr>
+<td>HU</td>
+<td>Head Unit</td>
+</tr>
+<tr>
+<td>PM</td>
+<td>Project Manager</td>
+</tr>
+<tr>
+<td>SPM</td>
+<td>Software Project Manager</td>
+</tr>
+<tr>
+<td>SAL</td>
+<td>Smart Application Link</td>
+</tr>
+<tr>
+<td>OTA</td>
+<td>Over-the-air Update</td>
+</tr>
+<tr>
+<td>COC</td>
+<td>Center of competence</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>Research and development</td>
+</tr>
+<tr>
+<td>SAFe</td>
+<td>Scaled Agile Framework</td>
+</tr>
+<tr>
+<td>IMS</td>
+<td>Interior Monitor System</td>
+</tr>
+<tr>
+<td>ASPICE</td>
+<td>Automotive Software Process Improvement and Capacity Determination</td>
+</tr>
+</tbody>
+</table>
+<h1 class="mume-header" id="references">References</h1>
+
+<ol>
+<li><a href="http://www.melconway.com/Home/Committees_Paper.html">http://www.melconway.com/Home/Committees_Paper.html</a></li>
+<li><a href="http://www.melconway.com/Home/pdf/committees.pdf">http://www.melconway.com/Home/pdf/committees.pdf</a></li>
+<li><a href="https://www.cnblogs.com/ghj1976/p/5703462.html">https://www.cnblogs.com/ghj1976/p/5703462.html</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Conway%27s_law">https://en.wikipedia.org/wiki/Conway&apos;s_law</a></li>
+<li><a href="https://blog.csdn.net/icqw1983/article/details/83782014">https://blog.csdn.net/icqw1983/article/details/83782014</a></li>
+<li><a href="https://medium.com/@emma_j_saunders/why-organization-design-shouldn-t-be-nice-8f34d0a54751">https://medium.com/@emma_j_saunders/why-organization-design-shouldn-t-be-nice-8f34d0a54751</a></li>
+<li><a href="https://www.heflo.com/blog/business-management/small-business-organizational-structure-examples/">https://www.heflo.com/blog/business-management/small-business-organizational-structure-examples/</a></li>
+<li><a href="https://smallbusiness.chron.com/flat-vs-hierarchical-organizational-structure-724.html">https://smallbusiness.chron.com/flat-vs-hierarchical-organizational-structure-724.html</a></li>
+<li><a href="https://blog.csdn.net/samxx8/article/details/51930577">https://blog.csdn.net/samxx8/article/details/51930577</a></li>
+<li><a href="https://www.infoq.cn/article/K9qVBKjfzh3lFzzJ_MvF">https://www.infoq.cn/article/K9qVBKjfzh3lFzzJ_MvF</a></li>
+<li><a href="https://rationalwiki.org/wiki/Discordianism#SNAFU_Principle">https://rationalwiki.org/wiki/Discordianism#SNAFU_Principle</a></li>
+<li><a href="https://www.infoq.cn/article/every-architect-should-study-conway-law">https://www.infoq.cn/article/every-architect-should-study-conway-law</a></li>
+<li><a href="https://www.cs.drexel.edu/~yfcai/CS451/RequiredReadings/MythicalManMonth.pdf">https://www.cs.drexel.edu/~yfcai/CS451/RequiredReadings/MythicalManMonth.pdf</a></li>
+<li><a href="http://mamund.com/talks/2016-03-qconsp-teams/transcript.html">http://mamund.com/talks/2016-03-qconsp-teams/transcript.html</a></li>
+<li><a href="http://mamund.com/talks/2016-03-qconsp-teams/2016-03-qconsp-teams.pdf">http://mamund.com/talks/2016-03-qconsp-teams/2016-03-qconsp-teams.pdf</a></li>
+<li><a href="https://medium.com/@Alibaba_Cloud">https://medium.com/@Alibaba_Cloud</a> conways-law-a-theoretical-basis-for-the-microservice-architecture-c666f7fcc66a</li>
+<li><a href="http://ressources.unisciel.fr/algoprog/s00aaroot/aa00module1/res/%5BCormen-AL2011%5DIntroduction_To_Algorithms-A3.pdf">http://ressources.unisciel.fr/algoprog/s00aaroot/aa00module1/res/[Cormen-AL2011]Introduction_To_Algorithms-A3.pdf</a>, Chapter 4</li>
+<li><a href="https://www.infoq.com/articles/standish-chaos-2015/">https://www.infoq.com/articles/standish-chaos-2015/</a></li>
+<li><a href="https://andrewbegel.com/papers/coordination-chase09.pdf">https://andrewbegel.com/papers/coordination-chase09.pdf</a></li>
+<li><a href="http://www.sohu.com/a/42073902_120865">http://www.sohu.com/a/42073902_120865</a></li>
+<li><a href="https://backend.orbit.dtu.dk/ws/portalfiles/portal/126260733/Bekdik_and_Thuesen_EPOC_2016.pdf">https://backend.orbit.dtu.dk/ws/portalfiles/portal/126260733/Bekdik_and_Thuesen_EPOC_2016.pdf</a></li>
+<li><a href="https://www.microsoft.com/en-us/research/publication/the-influence-of-organizational-structure-on-software-quality-an-empirical-case-study">https://www.microsoft.com/en-us/research/publication/the-influence-of-organizational-structure-on-software-quality-an-empirical-case-study</a></li>
+<li><a href="https://martinfowler.com/articles/microservices.html">https://martinfowler.com/articles/microservices.html</a></li>
+<li><a href="https://herbsleb.org/web-pres/slides/Siemens-conference-7-17-08-dist.pdf">https://herbsleb.org/web-pres/slides/Siemens-conference-7-17-08-dist.pdf</a></li>
+<li><a href="https://www.proofhub.com/articles/benefits-of-cross-functional-team-collaboration">https://www.proofhub.com/articles/benefits-of-cross-functional-team-collaboration</a></li>
+<li><a href="https://www.scaledagileframework.com">https://www.scaledagileframework.com</a></li>
+<li>Feng Jin, The Ingredients of Prodcut, 2019</li>
+<li>F. P. Brooks, The Mythical Man-Month, Anniversary Edition: Addison-Wesley Publishing Company, 1995.</li>
+<li>Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein, Introduction to Algorithms, Third Edition: The MIT Press, 2009.</li>
+<li><a href="http://www.automotivespice.com/fileadmin/software-download/AutomotiveSPICE_PAM_31.pdf">http://www.automotivespice.com/fileadmin/software-download/AutomotiveSPICE_PAM_31.pdf</a></li>
+</ol>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

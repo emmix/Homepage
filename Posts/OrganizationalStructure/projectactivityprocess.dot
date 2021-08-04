@@ -1,0 +1,54 @@
+
+
+digraph structs {
+	node [shape=record];
+
+    system [shape=record,label="
+    {requirements | concept | architecture}
+    "]
+
+    software [shape=record,label="
+	 { 
+		 requiremets |
+		 architecutre |
+		 <developement> developement |
+		 integration |
+		 test 
+	 } |
+	 spm
+	"] 
+    developement [shape=record,label="
+    {application | framework | bsp | ......}
+    "]
+
+	project [shape=record,label="
+    {
+       sales | 
+       product |
+       {
+           pm | 
+           {
+               <system> system  |
+               {
+                   mechanical |
+                   hw |
+                   <software> software
+               } |
+               test |
+               production  
+           } | 
+           quality | 
+           process
+       }
+    } | 
+    hr | 
+    finace |
+    purchasing |
+    it"
+    
+    ];
+
+"project":system -> system [color=blue]
+"project":software -> software [color=blue]
+"software":developement -> developement [color=blue]
+}

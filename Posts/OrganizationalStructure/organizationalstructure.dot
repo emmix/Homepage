@@ -1,0 +1,65 @@
+digraph structs {
+
+node [shape = record];
+ 
+org -> sales
+org -> product
+org -> engineering [label="CEO"]
+org -> production
+org -> hr
+org -> it
+org -> finance
+org -> purchasing
+
+engineering -> system
+engineering -> mechanics
+engineering -> hardware
+engineering -> software [label="CTO"]
+engineering -> process
+engineering -> quality
+engineering -> systest
+engineering -> pm
+
+software -> spm
+software -> requirements
+software -> architecture
+software -> integration
+software -> swtest
+software -> development [label="Director"]
+
+development -> application
+development -> framework [label="Manager"]
+development -> bsp 
+
+"framework.auido"[color=blue]
+framework -> "framework.auido"  [label="GL"]
+framework -> "...."
+
+"bsp.auido"[color=blue]
+bsp -> "bsp.auido"
+bsp -> "....."
+
+"application.auido"[color=blue]
+application -> "application.auido"
+application -> "..."
+
+"dev.audio" [color=red]
+"application.auido" -> "dev.audio" [style=dotted]
+"framework.auido" -> "dev.audio" [style=dotted, label="FO"]
+"bsp.auido" -> "dev.audio" [style=dotted]
+development -> "dev.audio"
+
+"software.audio" [color=red]
+software -> "software.audio"
+"dev.audio" -> "software.audio" [style=dotted]
+
+"engineering.audio" [color=red]
+"software.audio" -> "engineering.audio" [style=dotted]
+"engineering" -> "engineering.audio"
+
+"org.audio?" [color=red]
+"engineering.audio" -> "org.audio?" [style=dotted]
+"org" -> "org.audio?"
+
+}
+
