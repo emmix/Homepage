@@ -11,5 +11,6 @@ posts:
 	rsync -rupE $(Projects)/Common/Engineering/Software/Common/TheIngredientsOfProduct Posts
 	rsync -rupE $(Projects)/Common/Common/OrganizationalStructure Posts
 	rsync -rupE $(Projects)/Common/Engineering/Software/Common/Algorithms/IntroductionToAlgorithms/Ch31.NumberTheoreticAlgorithms Posts
-	rsync -rupE $(Projects)//Common/Engineering/Software/Common/TheOverviewOfIviOses  Posts
+	rsync -rupE $(Projects)/Common/Engineering/Software/Common/TheOverviewOfIviOses  Posts
+	rsync -rupE $(Projects)/Common/Engineering/Software/Bsp/Hypervisor Posts
 

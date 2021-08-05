@@ -1,0 +1,1312 @@
+<!DOCTYPE html><html><head>
+      <title>the_overview_of_hypervisors</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/jfeng/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.4.3/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+
+      
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1>The Overview of Hypervisors</h1>
+<h1 class="mume-header" id="contents">Contents</h1>
+
+<ul>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#version">Version</a></li>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#history">History</a></li>
+<li><a href="#embedded-hypervisor">Embedded Hypervisor</a></li>
+</ul>
+</li>
+<li><a href="#market">Market</a>
+<ul>
+<li><a href="#automotive-market-treads">Automotive Market Treads</a></li>
+<li><a href="#global-market-overview-of-hypervisor">Global Market Overview of Hypervisor</a></li>
+<li><a href="#key-players-17">Key players [17]</a></li>
+<li><a href="#conclusion15">Conclusion[15]</a></li>
+</ul>
+</li>
+<li><a href="#requirements">Requirements</a>
+<ul>
+<li><a href="#overall">Overall</a></li>
+<li><a href="#hardware-reuse">Hardware reuse</a></li>
+<li><a href="#ip-reuse">IP reuse</a></li>
+<li><a href="#security261925">security[26][19][25]</a></li>
+<li><a href="#safety">Safety</a></li>
+<li><a href="#use-cases-30">Use cases [30]</a></li>
+<li><a href="#chanllenges15">Chanllenges[15]</a>
+<ul>
+<li><a href="#safety-1">Safety</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#limits-of-virtualization17">Limits of virtualization[17]</a></li>
+<li><a href="#complications">complications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#concept">Concept</a>
+<ul>
+<li><a href="#types">Types</a>
+<ul>
+<li><a href="#types-1">Types</a></li>
+<li><a href="#type-1-hypervisor">Type 1 Hypervisor</a></li>
+<li><a href="#type-2-hypervisor">Type 2 Hypervisor</a></li>
+<li><a href="#type-0-hypervisor-32">Type 0 Hypervisor [32]</a></li>
+</ul>
+</li>
+<li><a href="#vitualization">Vitualization</a>
+<ul>
+<li><a href="#virtualization3133">Virtualization[31][33]</a></li>
+<li><a href="#fullvitualization">Fullvitualization</a></li>
+<li><a href="#paravirtualization">Paravirtualization</a></li>
+<li><a href="#hardware-assisted-virtualization">Hardware assisted Virtualization</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li><a href="#device-sharing">Device Sharing</a>
+<ul>
+<li><a href="#sharing-by-hw-virtualization">Sharing by HW Virtualization</a></li>
+<li><a href="#sharing-by-virtio">sharing by VirtIO</a></li>
+<li><a href="#pass-through">pass-through</a></li>
+<li><a href="#comparation">Comparation</a></li>
+</ul>
+</li>
+<li><a href="#statistics">Statistics</a>
+<ul>
+<li><a href="#open-source">Open Source</a></li>
+<li><a href="#proprietary">Proprietary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#hypervisors">Hypervisors</a>
+<ul>
+<li><a href="#hypeervisors">Hypeervisors</a></li>
+<li><a href="#kvm">KVM</a>
+<ul>
+<li><a href="#overview-1">Overview</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#characteristics">Characteristics</a></li>
+</ul>
+</li>
+<li><a href="#xen">Xen</a>
+<ul>
+<li><a href="#architecture-1">Architecture</a></li>
+<li><a href="#characteristics-1">Characteristics</a></li>
+</ul>
+</li>
+<li><a href="#xvisor">Xvisor</a>
+<ul>
+<li><a href="#overview-2">Overview</a></li>
+<li><a href="#architecture-2">Architecture</a></li>
+<li><a href="#characteristics-2">Characteristics</a></li>
+</ul>
+</li>
+<li><a href="#acrn">ACRN</a></li>
+<li><a href="#mentor-embedded-hypervisor">Mentor Embedded Hypervisor</a></li>
+<li><a href="#eb-corbos-hypervisor">EB corbos Hypervisor</a></li>
+</ul>
+</li>
+<li><a href="#benchmark">Benchmark</a>
+<ul>
+<li><a href="#applications">Applications</a></li>
+</ul>
+</li>
+<li><a href="#how-to-choose-a-hypervisor">How to Choose a Hypervisor</a></li>
+<li><a href="#conclusion-1">Conclusion</a></li>
+<li><a href="#staging">Staging</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h1 class="mume-header" id="version">Version</h1>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0.1</td>
+<td>2019.08.25</td>
+<td>Jin Feng</td>
+<td>Initial version</td>
+</tr>
+</tbody>
+</table>
+<h1 class="mume-header" id="overview">Overview</h1>
+
+<h2 class="mume-header" id="introduction">Introduction</h2>
+
+<p>A Hypervisor also known as Virtual Machine Monitor (VMM) can be a piece of software, firmware or hardware that gives an impression to the guest machines(virtual machines) as if they were operating on a physical hardware. It allows multiple operating system to share a single host and its hardware. The hypervisor manages requests by virtual machines to access to the hardware resources (RAM, CPU, NIC etc) acting as an independent machine[26].</p>
+<p><img src="https://vapour-apps.com/wp-content/uploads/2016/05/figure1.gif" alt></p>
+<h2 class="mume-header" id="history">History</h2>
+
+<p>Although server virtualization technology is currently receiving much attention, the concept is not new. Actually the idea came in the mid-1960s, when the Giants and expensive computers of the day reached to a high processing speed but they were unable to seize the expensive computing time due to management processes that needed to be done manually by the operator. To get the best out of expensive computer processing, it was necessary to run multiple processes in parallel. Thus arose the concept of time sharing, which culminated with the idea of virtualization.</p>
+<p>Time Sharing: This concept means sharing time, i.e., idle time between the processes are shared with other processes to streamline the system. Multiple jobs are executed simultaneously, and the CPU meets each job for a little while, one by one in sequence. The time dedicated to each job are small enough so that users can interact with each program to recognize that there are no other programs running.</p>
+<p>In 1972, an American computer scientist, Robert P. Goldberg introduced the theoretical basis of the architecture for virtual computer systems in his dissertation at Harvard University. In the same year IBM introduced a mainframe that was able to simultaneously run different operating systems under the supervision of a control program &#x2013; hypervisor.</p>
+<p>The IBM System 370 was the first commercial computer entirely designed for virtualization, with which, the operating system CP / CMS allows you to run multiple instances simultaneously. This was followed by the IBM z / VM, which took advantage of hardware virtualization. The VM / CMS is highly regarded and widely distributed in the industry and academia. Several modern approaches to virtualization implementations are very unique for mainframe of computers from IBM.</p>
+<p>Over the years, virtualization has begun to fall by the wayside due to creation of new client / server applications and the decline of the mainframe platform that lost power before the rise of the x86 platform. According to VMWare, the widespread adoption of Windows and Linux as the operating system on servers in the 1990s eventually established the x86 architecture as the industry standard.</p>
+<p>Due to high costs for the purchase of a mainframe, companies began to acquire x86 servers according to demand, this is a process called low-end (several small machines doing the work of a large dedicated server). In this scenario, instead of having a high initial cost with the purchase of a mainframe, they opt for purchasing smaller servers according to need.</p>
+<p>The impact of this new strategy was to ensure  a good deal of backlash against hardware scaling problems, and most of these servers were used for a single application. Thus, according to International Data Corporation, in each implementation of a typical x86 server, the roof of CPU usage was between 10 to 15% of the total capacity of this server.</p>
+<p>The servers were oversized for the application that would perform, and as a result, ended up suffering the same problem of mainframes of the 1960s, that is, not all took advantage of their computing power,  and were underutilized.</p>
+<p>Then in 1999, VMware Inc. introduced the concept of virtualization on the x86 platform as a more efficient way to operate the equipment of the platform, taking advantage of x86 servers to provide a computational structure that would enable the full utilization of computational resources of these servers.</p>
+<p>From 2005, processor manufacturers like Intel and AMD have given more attention to the need to improve hardware support in their products. Intel with its Intel VT and AMD with AMD-V. These hardware contains features which allow to exploit hypervisors that are used with the improved technique of virtualization (full virtualization) that make it easier to implement and enhance the performance[27].</p>
+<p>In briefly, virtualization began in the 1960s, as a method of logically dividing the system resources provided by mainframe computers between different applications. Virtualization began and evolved on larger IBM mainframes, but the trend followed the evolution of computing into servers, desktops, and recently embedded devices[26].</p>
+<h2 class="mume-header" id="embedded-hypervisor">Embedded Hypervisor</h2>
+
+<p>Virtualization technology has shown immense popularity within embedded systems due to its direct relationship with cost reduction, better resource utilization, and higher performance measures. Efficient hypervisors are required to achieve such high performance measures in virtualized environments, while taking into consideration the low memory footprints as well as the stringent timing constraints of embedded systems.</p>
+<p>Embedded hypervisors, targeting embedded systems and certain real-time operating system (RTOS) environments, are designed with different requirements when compared to desktop and enterprise systems, including robustness, security and real-time capabilities.</p>
+<p>We will focus on Embedded Hypervisor, especially for automotive area in this article.</p>
+<h1 class="mume-header" id="market">Market</h1>
+
+<h2 class="mume-header" id="automotive-market-treads">Automotive Market Treads</h2>
+
+<p><img src="./automotive_market_trends.png" alt></p>
+<h2 class="mume-header" id="global-market-overview-of-hypervisor">Global Market Overview of Hypervisor</h2>
+
+<p>The current status and predictions from several organizations:</p>
+<ul>
+<li><strong>Grand View Research, Inc.</strong>[15]<br>
+The global automotive hypervisor market size is expected to reach USD 698.2 million by 2025, growing at a CAGR of 33.2% from 2019 to 2025, according to a new study by Grand View Research, Inc. [15]</li>
+<li><strong>VDC Research</strong><br>
+<img src="./global_market_overview.png" alt></li>
+<li><strong>Technavio</strong> [18][28][29]<br>
+<img src="https://mms.businesswire.com/media/20190529005431/en/724245/5/Global_Automotive_Hypervisor_Market_2019-2023.jpg?download=1" alt></li>
+</ul>
+<h2 class="mume-header" id="key-players-17">Key players [17]</h2>
+
+<p>The market appears to be fairly fragmented with several players occupying the market share. Companies such as BlackBerry Ltd. and Mentor Graphics Corp. have intensified competition. Factors such as the growth of automotive electronics and the need for virtualization in the automotive domain will provide significant growth opportunities for automotive hypervisor manufacturers.</p>
+<ul>
+<li>BlackBerry Ltd.</li>
+<li>Mentor Graphics Corp.</li>
+<li>Opensynergy</li>
+<li>Green Hills</li>
+<li>Redbend</li>
+<li>Sasken Technologies Ltd.</li>
+<li>SYSGO AG</li>
+<li>Visteon Corp.</li>
+<li></li>
+</ul>
+<h2 class="mume-header" id="conclusion15">Conclusion[15]</h2>
+
+<p><a href="https://finance.yahoo.com/news/automotive-hypervisor-market-size-worth-093500241.html">https://finance.yahoo.com/news/automotive-hypervisor-market-size-worth-093500241.html</a></p>
+<ul>
+<li>The type 2 segment is expected to register the highest CAGR over the forecast period as these hypervisors allow various virtual machines to run simultaneously using different operating systems</li>
+<li>The passenger cars segment is expected to grow at a significant pace over the forecast period owing to the growing concerns pertaining to the safety and security of passenger cars</li>
+<li>The growing initiatives undertaken by governments in the developing countries to improve electric vehicle parc are expected to create new growth opportunities for the market players</li>
+<li>The increasing production of autonomous cars with entertainment and infotainment systems is creating growth opportunities for the players in the automotive hypervisor market</li>
+<li>The key players in the market include Continental AG; Renesas Electronics Corporation; NXP Semiconductor N.V.; Wind River Systems, Inc.; Green Hills Software LLC; Sasken Technologies Ltd.; and Mentor Graphics Corporation.</li>
+</ul>
+<h1 class="mume-header" id="requirements">Requirements</h1>
+
+<h2 class="mume-header" id="overall">Overall</h2>
+
+<p>An operating system running on a hypervisor doesn&#x2019;t have access to real hardware resources. And because hypervisors virtualize software environments, they can be isolated from each other.<br>
+This is key for components with different ASIL levels. They can be kept separate, so they don&#x2019;t need to be recertified for ISO 26262 with every system change. That&#x2019;s why embedded hypervisors are important for compliance, particularly in the automotive industry. Plus, using hypervisors can protect safety-critical applications from hackers, too.</p>
+<p>The property of <strong>isolation</strong> can take effects on several aspects of automotive requirements</p>
+<h2 class="mume-header" id="hardware-reuse">Hardware reuse</h2>
+
+<p>expensive hardware</p>
+<h2 class="mume-header" id="ip-reuse">IP reuse</h2>
+
+<p>run multiple OSes is IP reuse</p>
+<h2 class="mume-header" id="security261925">security[26][19][25]</h2>
+
+<p>TODO</p>
+<h2 class="mume-header" id="safety">Safety</h2>
+
+<p>TODO</p>
+<h2 class="mume-header" id="use-cases-30">Use cases [30]</h2>
+
+<h2 class="mume-header" id="chanllenges15">Chanllenges[15]</h2>
+
+<p>One of the challenges faced by the market is the lack of standards related to automotive virtualization.</p>
+<h3 class="mume-header" id="safety-1">Safety</h3>
+
+<p>Currently, the only regulation to be followed by the market players is ISO 26262, a functional safety standard that regulates electronic and electrical systems throughout the product development lifecycle, from development to decommissioning.</p>
+<h3 class="mume-header" id="security">Security</h3>
+
+<p>The lack of cybersecurity standards across the globe is leading to issues related to hacking. National Institute of Standards and Technology&#x2019;s Cybersecurity Framework (U.S.),EU&#x2019;s Regulation against Geo-IP-based blocking of EU member countries or economies (EU), and others have introduced cybersecurity standards.These standards are to be mandatorily followed by the automobile providers while manufacturing autonomous vehicles.</p>
+<h3 class="mume-header" id="limits-of-virtualization17">Limits of virtualization[17]</h3>
+
+<p>Virtualization is incapable of reducing a trusted computing base (TCB), which is a vital component of the system&apos;s security. Moreover, virtualization alone cannot address all security requirements associated with embedded systems. Many such limitations of virtualization are expected to hinder the growth of the market over the forecast period.</p>
+<h3 class="mume-header" id="complications">complications</h3>
+
+<p>Complications with the integration of all the devices and components in a common virtual software architecture; this factor is expected to act as a restraint to the market growth is impacting negatively on the growth of RFID tag market in the current market scenario.</p>
+<h1 class="mume-header" id="concept">Concept</h1>
+
+<h2 class="mume-header" id="types">Types</h2>
+
+<h3 class="mume-header" id="types-1">Types</h3>
+
+<p>The comparison of virtualization hypervisor of the Type 1 hypervisor, it enables the hardware virtualization and the Type 2 hypervisor, it runs atop existing OSs.</p>
+<p><img src="https://www.grandviewresearch.com/static/img/research/north-america-automotive-hypervisor-market.png" alt>[16]</p>
+<h3 class="mume-header" id="type-1-hypervisor">Type 1 Hypervisor</h3>
+
+<p><img src="./type_1.png" alt></p>
+<ul>
+<li>This is also known as Bare Metal or Embedded or Native Hypervisor.</li>
+<li>It works directly on the hardware of the host and can monitor operating systems that run above the hypervisor.</li>
+<li>It is completely independent from the Operating System.</li>
+<li>The hypervisor is small as its main task is sharing and managing hardware resources between different operating systems.</li>
+<li>A major advantage is that any problems in one virtual machine or guest operating system do not affect the other guest operating systems running on the hypervisor.</li>
+</ul>
+<h3 class="mume-header" id="type-2-hypervisor">Type 2 Hypervisor</h3>
+
+<p><img src="./type_2.png" alt></p>
+<ul>
+<li>This is also known as Hosted Hypervisor.</li>
+<li>In this case, the hypervisor is installed on an operating system and then supports other operating systems above it.<br>
+It is completely dependent on host Operating System for its operations</li>
+<li>While having a base operating system allows better specification of policies, any problems in the base operating system a ffects the entire system as well even if the hypervisor running above the base OS is secure</li>
+</ul>
+<h3 class="mume-header" id="type-0-hypervisor-32">Type 0 Hypervisor [32]</h3>
+
+<p><img src="./type_0.png" alt></p>
+<ul>
+<li>Some parts in the literature refer to embedded hypervisors as Type 0 hypervisors or un-hosted hypervisors.</li>
+<li>The coining of these terms is related to the fact that embedded hypervisors are closer to the hardware when compared to Type 1 or Type 2 hypervisors. As shown in Fig 4, Type 1 hypervisors are often thought of to be integrated into the host operating system and in comparison embedded hypervisors run without a fully fledged operating system on the native device which means that it does not need an operating system to be integrated into and hence the tem un-hosted.</li>
+<li>Small size and sleek implementation</li>
+<li>Support for independent execution but interactive coexistence of applications in a secure environment.</li>
+<li>Low latency communication and switching between system components.</li>
+<li>Being able to meet real time requirements of embedded applications and minimum affect on the performance.</li>
+<li>Minimum affect on system resources and fast response time.</li>
+</ul>
+<h2 class="mume-header" id="vitualization">Vitualization</h2>
+
+<h3 class="mume-header" id="virtualization3133">Virtualization[31][33]</h3>
+
+<p><img src="./full_para.jpeg" alt></p>
+<h3 class="mume-header" id="fullvitualization">Fullvitualization</h3>
+
+<p>In full virtualiztion, the guest operating system runs on top of a hypervisor that sits on the bare metal. the guest is unware that it is being virtualized and requires no changes to work in this configuration</p>
+<ul>
+<li>VMware server</li>
+<li>Oracle VM Virtual Box</li>
+<li>KVM</li>
+</ul>
+<h3 class="mume-header" id="paravirtualization">Paravirtualization</h3>
+
+<p>In Paravitualization, the guest operating system is not only aware that ti is running on a hypervisor but includes code to make guest-to-hypervisor transitions more efficient</p>
+<ul>
+<li>QNX (QNX)</li>
+<li>Multivisor (Greenills)</li>
+<li>Coqos (Opensynergy)</li>
+</ul>
+<h3 class="mume-header" id="hardware-assisted-virtualization">Hardware assisted Virtualization</h3>
+
+<p>TODO</p>
+<h3 class="mume-header" id="conclusion">Conclusion</h3>
+
+<p><img src="./virt_conclusion.jpeg" alt></p>
+<h2 class="mume-header" id="device-sharing">Device Sharing</h2>
+
+<h3 class="mume-header" id="sharing-by-hw-virtualization">Sharing by HW Virtualization</h3>
+
+<p><img src="./hw_virt.jpeg" alt></p>
+<h3 class="mume-header" id="sharing-by-virtio">sharing by VirtIO</h3>
+
+<p><img src="./virtio_share.jpeg" alt></p>
+<h3 class="mume-header" id="pass-through">pass-through</h3>
+
+<p><img src="./pass_virtio.jpeg" alt></p>
+<h3 class="mume-header" id="comparation">Comparation</h3>
+
+<p><img src="./share_conclusion.jpeg" alt></p>
+<h2 class="mume-header" id="statistics">Statistics</h2>
+
+<h3 class="mume-header" id="open-source">Open Source</h3>
+
+<table>
+<thead>
+<tr>
+<th>Hypervisors</th>
+<th>Type</th>
+<th>Area</th>
+<th>Maturity</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KVM</td>
+<td>1</td>
+<td>Embedded, Desktop, Server</td>
+<td>Has Products in Server/Desktop</td>
+<td></td>
+</tr>
+<tr>
+<td>Xen</td>
+<td>1</td>
+<td>Embedded, Desktop, Server</td>
+<td>Has Products in Server/Desktop</td>
+<td></td>
+</tr>
+<tr>
+<td>Xvisor</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>General Dynamics (OKlabs)</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>HIS(OpenRTOS)</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Intel ACRM</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Kernkonzep</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Micrium (Micro COS3)</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Siemens Jailhouse</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Sierraware on ARM</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Real-time Linux</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Perseus 32bit on XEN</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>XEN-project</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Virtual Box</td>
+<td>1</td>
+<td>Server, Desktop</td>
+<td>Mature</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="proprietary">Proprietary</h3>
+
+<table>
+<thead>
+<tr>
+<th>Hypervisors</th>
+<th>Type</th>
+<th>Area</th>
+<th>Maturity</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DDC-I (DEOS)</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>eSOL (eT-kernel)</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Greenhills (Integrity)</td>
+<td>1</td>
+<td>Embedded, IVI, IC</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>Harman/Samsung (Red Bend)</td>
+<td>1</td>
+<td>Embedded</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LynxOS</td>
+<td>1</td>
+<td>Embedded</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>Mentor Graphics (Nucleus)</td>
+<td>1</td>
+<td>Embedded</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>Open Synergy (COQOS)</td>
+<td>1</td>
+<td>Embedded, IVI</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>Perseus 64bit on ARM</td>
+<td>1</td>
+<td>Embedded</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>QNX (Neutrino)</td>
+<td>1</td>
+<td>Embedded, IVI, IC</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>Real-time Systems</td>
+<td>1</td>
+<td>Embedded</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>SYSGO AG (PikeOS)</td>
+<td>1</td>
+<td>Embedded</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>AG (PikeOS)</td>
+<td>1</td>
+<td>Embedded</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>Microsoft Hyper-V</td>
+<td>1</td>
+<td>Desktop, Server</td>
+<td>Mature</td>
+<td></td>
+</tr>
+<tr>
+<td>VMware ESXI/ESX</td>
+<td>1</td>
+<td>Desktop, Server</td>
+<td>Mature</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 class="mume-header" id="hypervisors">Hypervisors</h1>
+
+<h2 class="mume-header" id="hypeervisors">Hypeervisors</h2>
+
+<p>The general rules of hypervisors are:</p>
+<ul>
+<li>The preformance of type 1 hypervisors outperform a type 2 hypervisor.</li>
+<li>The features of type 2 hypervisors outperform a type 1 hypervisor.</li>
+<li>The commercial company offers a well-established, stable hypervisor with excellent performance and features.</li>
+<li>The open source gives yourself the freedom, flexibility, and resources to access source code and build the foundation of hypervisor</li>
+<li>The index to measure the maturity is mass product</li>
+</ul>
+<h2 class="mume-header" id="kvm">KVM</h2>
+
+<h3 class="mume-header" id="overview-1">Overview</h3>
+
+<p><img src="http://static.zybuluo.com/chensiqi/h8t13ui6x2n2amn1tctno689/QQ%E6%88%AA%E5%9B%BE20180329205226.png" alt> <sup>[11]</sup><br>
+KVM is production-ready for enterprise workloads with the features you need to support your physical and virtual infrastructure, at a lower operating cost. Choosing a virtualization option based on KVM has many advantages over other solutions, like VMware vSphere.<sup>[10]</sup></p>
+<h3 class="mume-header" id="architecture">Architecture</h3>
+
+<p><img src="./kvm_architecture.png" alt></p>
+<h3 class="mume-header" id="characteristics">Characteristics</h3>
+
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Conent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Type 1</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Open Source, Proprietary</td>
+</tr>
+<tr>
+<td>Vendor</td>
+<td>Communicty, Citrix, Oracle</td>
+</tr>
+<tr>
+<td>Host CPU</td>
+<td>Arm, X86</td>
+</tr>
+<tr>
+<td>Guest CPU</td>
+<td>Arm, X86</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td></td>
+</tr>
+<tr>
+<td>Hypervisor Design</td>
+<td>Partially Monolithic</td>
+</tr>
+<tr>
+<td>Virtualization Mode</td>
+<td>Full/Para</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td></td>
+</tr>
+<tr>
+<td>Virtualized Devices</td>
+<td>CPU, Memory (/dev/kvm), User space emulator for guest hardware emulation(QEMU)</td>
+</tr>
+<tr>
+<td>Host OS</td>
+<td>Linux Kernel</td>
+</tr>
+<tr>
+<td>Guest OS</td>
+<td></td>
+</tr>
+<tr>
+<td>Area</td>
+<td>Server, Desktop, Embedded</td>
+</tr>
+<tr>
+<td>CPU Overhead</td>
+<td></td>
+</tr>
+<tr>
+<td>Mem Overead</td>
+<td></td>
+</tr>
+<tr>
+<td>Lock sync latency</td>
+<td></td>
+</tr>
+<tr>
+<td>Virtual Timer interrupt overhead</td>
+<td></td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Host OS</td>
+</tr>
+<tr>
+<td>Security</td>
+<td></td>
+</tr>
+<tr>
+<td>Safety</td>
+<td></td>
+</tr>
+<tr>
+<td>Maturity</td>
+<td></td>
+</tr>
+<tr>
+<td>Cost</td>
+<td></td>
+</tr>
+<tr>
+<td>Support</td>
+<td></td>
+</tr>
+<tr>
+<td>Tool</td>
+<td>Includes Mentor Embedded Sourcery&#x2122; CodeBench and Sourcery&#x2122; Analyzer for a complete integrated design environment (IDE)</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>Dynamic, allow forload balancing of the payload and priority-based execution to support stringent realtime and performance constraints.</td>
+</tr>
+<tr>
+<td>Feature</td>
+<td>QEMU.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="xen">Xen</h2>
+
+<h3 class="mume-header" id="architecture-1">Architecture</h3>
+
+<p><img src="./xen_architecture.png" alt></p>
+<h3 class="mume-header" id="characteristics-1">Characteristics</h3>
+
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Conent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Type 1</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Open Source, Proprietary</td>
+</tr>
+<tr>
+<td>Vendor</td>
+<td>Communicty, Citrix, Oracle</td>
+</tr>
+<tr>
+<td>Host CPU</td>
+<td>Arm, X86</td>
+</tr>
+<tr>
+<td>Guest CPU</td>
+<td>Arm, X86</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td></td>
+</tr>
+<tr>
+<td>Hypervisor Design</td>
+<td>Micro-kernelized</td>
+</tr>
+<tr>
+<td>Virtualization Mode</td>
+<td>Full/Para</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Event channel</td>
+</tr>
+<tr>
+<td>Shared Devices</td>
+<td>CPU, MMU, IRQ Handling</td>
+</tr>
+<tr>
+<td>Host OS</td>
+<td>Dom0 is Linux Kernel</td>
+</tr>
+<tr>
+<td>Guest OS</td>
+<td>Android, AUTOSAR, Mentor Embedded Linux, Nucleus RTOS</td>
+</tr>
+<tr>
+<td>Area</td>
+<td>Server, Desktop, Embedded</td>
+</tr>
+<tr>
+<td>CPU Overhead</td>
+<td></td>
+</tr>
+<tr>
+<td>Mem Overead</td>
+<td></td>
+</tr>
+<tr>
+<td>Lock sync latency</td>
+<td></td>
+</tr>
+<tr>
+<td>Virtual Timer interrupt overhead</td>
+<td></td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>2%(typical), 8%(worst), Linux kernel running as Dom0 performs slightly slower than Linux kernel running directly on hardware without Xen</td>
+</tr>
+<tr>
+<td>Security</td>
+<td></td>
+</tr>
+<tr>
+<td>Safety</td>
+<td></td>
+</tr>
+<tr>
+<td>Maturity</td>
+<td></td>
+</tr>
+<tr>
+<td>Cost</td>
+<td></td>
+</tr>
+<tr>
+<td>Support</td>
+<td></td>
+</tr>
+<tr>
+<td>Tool</td>
+<td>Includes Mentor Embedded Sourcery&#x2122; CodeBench and Sourcery&#x2122; Analyzer for a complete integrated design environment (IDE)</td>
+</tr>
+<tr>
+<td>Schedule</td>
+<td>Dynamic, allow forload balancing of the payload and priority-based execution to support stringent realtime and performance constraints.</td>
+</tr>
+<tr>
+<td>Feature</td>
+<td>Dom0 has full access to underlying host hardware.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="xvisor">Xvisor</h2>
+
+<h3 class="mume-header" id="overview-2">Overview</h3>
+
+<p>TODO</p>
+<h3 class="mume-header" id="architecture-2">Architecture</h3>
+
+<p><img src="./xvisor_architecture.png" alt></p>
+<h3 class="mume-header" id="characteristics-2">Characteristics</h3>
+
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Conent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Type 1</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Open Source, Proprietary</td>
+</tr>
+<tr>
+<td>Vendor</td>
+<td>Communicty, Citrix, Oracle</td>
+</tr>
+<tr>
+<td>Host CPU</td>
+<td>Arm, X86</td>
+</tr>
+<tr>
+<td>Guest CPU</td>
+<td>Arm, X86</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td></td>
+</tr>
+<tr>
+<td>Hypervisor Design</td>
+<td>Monolithic</td>
+</tr>
+<tr>
+<td>Virtualization Mode</td>
+<td>Full/Para</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td></td>
+</tr>
+<tr>
+<td>Virtualized Devices</td>
+<td>CPU, Memory (/dev/kvm), User space emulator for guest hardware emulation(QEMU)</td>
+</tr>
+<tr>
+<td>Host OS</td>
+<td>Linux Kernel</td>
+</tr>
+<tr>
+<td>Guest OS</td>
+<td></td>
+</tr>
+<tr>
+<td>Area</td>
+<td>Server, Desktop, Embedded</td>
+</tr>
+<tr>
+<td>CPU Overhead</td>
+<td></td>
+</tr>
+<tr>
+<td>Mem Overhead</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>IO Overhead<br>
+Lock sync latency        |<br>
+Virtual Timer interrupt overhead |<br>
+Performance              | Less overhead,<br>
+Security                 |<br>
+Safety                   |<br>
+Maturity                 |<br>
+Cost                     |<br>
+Support                  |<br>
+Tool                     | Includes Mentor Embedded Sourcery&#x2122; CodeBench and Sourcery&#x2122; Analyzer for a complete integrated design environment (IDE)<br>
+Cpu Schedule             | vCPU Scheduler and load balancer<br>
+Feature                  | Lightweight, Configurable guest OS<br>
+Advantanges              | Single software layer provides all virtualizations. No degradation in device driver performance<br>
+Disadvantages            | Lack of rich board and device driver support</p>
+<h2 class="mume-header" id="acrn">ACRN</h2>
+
+<h2 class="mume-header" id="mentor-embedded-hypervisor">Mentor Embedded Hypervisor</h2>
+
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Conent</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Type 1</td>
+<td></td>
+</tr>
+<tr>
+<td>Host CPU</td>
+<td>Arm</td>
+<td></td>
+</tr>
+<tr>
+<td>Guest CPU</td>
+<td>Arm</td>
+<td></td>
+</tr>
+<tr>
+<td>SoC</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Hypervisor Design</td>
+<td>Monolithic/Partially/Micro-kernelized</td>
+<td></td>
+</tr>
+<tr>
+<td>Virtualization Mode</td>
+<td>Full/Para</td>
+<td></td>
+</tr>
+<tr>
+<td>Host OS</td>
+<td>NA</td>
+<td></td>
+</tr>
+<tr>
+<td>Guest OS</td>
+<td>Android, AUTOSAR, Mentor Embedded Linux, Nucleus RTOS</td>
+<td></td>
+</tr>
+<tr>
+<td>Area</td>
+<td>Automotive</td>
+<td></td>
+</tr>
+<tr>
+<td>CPU Overhead</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Mem Overead</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Lock sync latency</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Virtual Timer interrupt overhead<br>
+Overall Performance<br>
+Communication   |<br>
+Shared Devices  |<br>
+Security        |<br>
+Safety          |<br>
+Maturity        |<br>
+Cost            |<br>
+Support         |<br>
+Tool            | Includes Mentor Embedded Sourcery&#x2122; CodeBench and Sourcery&#x2122; Analyzer for a complete integrated design environment (IDE)<br>
+Schedule        | Dynamic, allow forload balancing of the payload and priority-based execution to support stringent realtime and performance constraints.<br>
+Feature         | Arm Trustzone, AMP/SMP,</p>
+<p><a href="http://s3.mentor.com/public_documents/datasheet/embedded-software/hypervisor-ds.pdf">http://s3.mentor.com/public_documents/datasheet/embedded-software/hypervisor-ds.pdf</a></p>
+<h2 class="mume-header" id="eb-corbos-hypervisor">EB corbos Hypervisor</h2>
+
+<p>security, safety, and realtime<br>
+<a href="https://www.elektrobit.com/products/ecu/eb-corbos/hypervisor/">https://www.elektrobit.com/products/ecu/eb-corbos/hypervisor/</a></p>
+<h1 class="mume-header" id="benchmark">Benchmark</h1>
+
+<h2 class="mume-header" id="applications">Applications</h2>
+
+<p><a href="http://xhypervisor.org/pdf/Embedded_Hypervisor_Xvisor_A_comparative_analysis.pdf">http://xhypervisor.org/pdf/Embedded_Hypervisor_Xvisor_A_comparative_analysis.pdf</a></p>
+<h1 class="mume-header" id="how-to-choose-a-hypervisor">How to Choose a Hypervisor</h1>
+
+<p><a href="https://www.redhat.com/en/topics/virtualization/kvm-vs-vmware-comparison">https://www.redhat.com/en/topics/virtualization/kvm-vs-vmware-comparison</a></p>
+<h1 class="mume-header" id="conclusion-1">Conclusion</h1>
+
+<h1 class="mume-header" id="staging">Staging</h1>
+
+<p><a href="https://www.networkworld.com/article/3243262/what-is-a-hypervisor.html">https://www.networkworld.com/article/3243262/what-is-a-hypervisor.html</a></p>
+<h1 class="mume-header" id="references">References</h1>
+
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Hypervisor">https://en.wikipedia.org/wiki/Hypervisor</a></li>
+<li><a href="https://ieeexplore.ieee.org/document/7092793">https://ieeexplore.ieee.org/document/7092793</a></li>
+<li><a href="https://www.techinformant.in/hypervisors-comparison-virtualization-introduction">https://www.techinformant.in/hypervisors-comparison-virtualization-introduction</a></li>
+<li><a href="https://www.golinuxhub.com/2014/07/comparison-type-1-vs-type-2-hypervisor.html">https://www.golinuxhub.com/2014/07/comparison-type-1-vs-type-2-hypervisor.html</a></li>
+<li><a href="http://ijarcet.org/wp-content/uploads/IJARCET-VOL-5-ISSUE-5-1546-1550.pdf">http://ijarcet.org/wp-content/uploads/IJARCET-VOL-5-ISSUE-5-1546-1550.pdf</a></li>
+<li><a href="https://www.embedded.com/design/operating-systems/4435211/KVM-ARM--The-Design-and-Implementation-of-the-Linux-ARM-Hypervisor">https://www.embedded.com/design/operating-systems/4435211/KVM-ARM--The-Design-and-Implementation-of-the-Linux-ARM-Hypervisor</a></li>
+<li><a href="https://www.flexiant.com/2014/02/12/hypervisor-comparison-kvm-xen-vmware-hyper-v/">https://www.flexiant.com/2014/02/12/hypervisor-comparison-kvm-xen-vmware-hyper-v/</a></li>
+<li><a href="https://opensourceforu.com/2019/04/the-top-open-source-hypervisor-technologies/">https://opensourceforu.com/2019/04/the-top-open-source-hypervisor-technologies/</a></li>
+<li><a href="https://vapour-apps.com/what-is-hypervisor/">https://vapour-apps.com/what-is-hypervisor/</a></li>
+<li><a href="https://www.redhat.com/en/topics/virtualization/kvm-vs-vmware-comparison">https://www.redhat.com/en/topics/virtualization/kvm-vs-vmware-comparison</a></li>
+<li><a href="https://www.cnblogs.com/chensiqiqi/p/9162989.html">https://www.cnblogs.com/chensiqiqi/p/9162989.html</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Comparison_of_platform_virtualization_software">https://en.wikipedia.org/wiki/Comparison_of_platform_virtualization_software</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine">https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine</a></li>
+<li><a href="http://xhypervisor.org/pdf/Embedded_Hypervisor_Xvisor_A_comparative_analysis.pdf">http://xhypervisor.org/pdf/Embedded_Hypervisor_Xvisor_A_comparative_analysis.pdf</a></li>
+<li><a href="https://www.grandviewresearch.com/press-release/global-automotive-hypervisor-market">https://www.grandviewresearch.com/press-release/global-automotive-hypervisor-market</a></li>
+<li><a href="https://www.grandviewresearch.com/industry-analysis/automotive-hypervisor-market">https://www.grandviewresearch.com/industry-analysis/automotive-hypervisor-market</a></li>
+<li><a href="https://finance.yahoo.com/news/insights-global-automotive-hypervisor-market-131551115.html">https://finance.yahoo.com/news/insights-global-automotive-hypervisor-market-131551115.html</a></li>
+<li><a href="https://www.theinsightpartners.com/reports/automotive-hypervisor-market">https://www.theinsightpartners.com/reports/automotive-hypervisor-market</a></li>
+<li><a href="https://wiki.automotivelinux.org/bof-hypervisor">https://wiki.automotivelinux.org/bof-hypervisor</a></li>
+<li><a href="https://wiki.automotivelinux.org/bof-hypervisor?s%5B%5D=agl&amp;s%5B%5D=specifications&amp;s%5B%5D=section&amp;s%5B%5D=7&amp;s%5B%5D=3">https://wiki.automotivelinux.org/bof-hypervisor?s[]=agl&amp;s[]=specifications&amp;s[]=section&amp;s[]=7&amp;s[]=3</a></li>
+<li><a href="https://wiki.automotivelinux.org/eg-virt">https://wiki.automotivelinux.org/eg-virt</a></li>
+<li><a href="https://at.projects.genivi.org/wiki/display/DIRO/Hypervisor+Project">https://at.projects.genivi.org/wiki/display/DIRO/Hypervisor+Project</a></li>
+<li><a href="https://www.ijser.org/researchpaper/A-comparative-study-of-Various-Hypervisors-Performance.pdf">https://www.ijser.org/researchpaper/A-comparative-study-of-Various-Hypervisors-Performance.pdf</a></li>
+<li><a href="http://www.ijicse.in/wp-content/uploads/2015/07/v2i3-14.pdf">http://www.ijicse.in/wp-content/uploads/2015/07/v2i3-14.pdf</a></li>
+<li><a href="https://www.perforce.com/blog/qac/how-automotive-hypervisors-enable-innovation-compliance">https://www.perforce.com/blog/qac/how-automotive-hypervisors-enable-innovation-compliance</a></li>
+<li><a href="https://www.embedded.com/design/operating-systems/4441695/Embedded-hypervisors">https://www.embedded.com/design/operating-systems/4441695/Embedded-hypervisors</a></li>
+<li><a href="https://www.esds.co.in/blog/virtualization-a-little-history/">https://www.esds.co.in/blog/virtualization-a-little-history/</a></li>
+<li><a href="https://www.marketsandmarkets.com/Market-Reports/automotive-hypervisor-market-124958216.html">https://www.marketsandmarkets.com/Market-Reports/automotive-hypervisor-market-124958216.html</a></li>
+<li><a href="https://www.businesswire.com/news/home/20190529005431/en/Global-Automotive-Hypervisor-Market-2019-2023-Adoption-Vehicl">https://www.businesswire.com/news/home/20190529005431/en/Global-Automotive-Hypervisor-Market-2019-2023-Adoption-Vehicl</a></li>
+<li><a href="https://at.projects.genivi.org/wiki/display/DIRO/Hypervisor+in+Automotive+-+Critical+Use+cases">https://at.projects.genivi.org/wiki/display/DIRO/Hypervisor+in+Automotive+-+Critical+Use+cases</a></li>
+<li><a href="https://www.unixarena.com/2017/12/para-virtualization-full-virtualization-hardware-assisted-virtualization.html/">https://www.unixarena.com/2017/12/para-virtualization-full-virtualization-hardware-assisted-virtualization.html/</a></li>
+<li><a href="https://www.astroarch.com/tvp_strategy/type-0-hypervisor-fact-or-fiction-17159/">https://www.astroarch.com/tvp_strategy/type-0-hypervisor-fact-or-fiction-17159/</a></li>
+<li><a href="https://pediaa.com/what-is-the-difference-between-full-virtualization-and-paravirtualization-in-cloud/">https://pediaa.com/what-is-the-difference-between-full-virtualization-and-paravirtualization-in-cloud/</a></li>
+</ol>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
