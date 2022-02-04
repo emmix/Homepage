@@ -294,7 +294,6 @@ Besides the vertical communication in hierachical organization and peer-to-peer 
 The connected organization is the blend of hierachical and network structures.
 ![](./connectedOrganization.png)
 
-
 ## Process
 There are many kinds of processes not only from the international or industrial or regiognal standards organization but also from companny internals. Also lots of frameworks for developing, delivering, and sustaning complex products, such as waterfall, scrum, and SAFe. As a project-centric company I would say
   
@@ -302,8 +301,15 @@ There are many kinds of processes not only from the international or industrial 
   * Keep the internal own-defined process as simple as possible
   * Take each output as a product which is developed via project managed by project manager.
 
+## A Meta Organizational Chart
+Please refer to the book "THE LEADERSHIP PIPELINE -- HOW TO BUILD THE LEADERSHIP POWERED COMPANY"
+
+![](./AMetaOrgChart.png)
+
+
+
 # Instance
-In last chapter we describe an general elastic template of creating an organizational structure. Now An concrete example for the companies which produce in-vehicle infortainments, instrument clusters, display, IMS, and other products with both hardware and software instatiated from template will be given. Before unveiling, please review the static structure of product described in The Ingredients of Product<sup>[27]</sup> article and the ASPICE project life cycle<sup>[30]</sup>.
+In last chapter we describe an general elastic template of creating an organizational structure. Now An concrete example for the companies which produce vehicle computers including in-vehicle infortainments, instrument clusters, display, IMS, and other products with both hardware and software instatiated from template will be given. Before unveiling, please review the static structure of product described in The Ingredients of Product<sup>[27]</sup> article and the ASPICE project life cycle<sup>[30]</sup>.
 
 
 ## Organizational blocks
@@ -472,4 +478,5 @@ TODO
 28. F. P. Brooks, The Mythical Man-Month, Anniversary Edition: Addison-Wesley Publishing Company, 1995.
 29. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein, Introduction to Algorithms, Third Edition: The MIT Press, 2009.
 30. http://www.automotivespice.com/fileadmin/software-download/AutomotiveSPICE_PAM_31.pdf
+31. Ram Charan, Steve Drotter, Jim Noel, The Leadership Pipeline, Second Edition, Jossey-Bass, 2011
 

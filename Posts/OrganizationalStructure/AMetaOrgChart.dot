@@ -1,0 +1,37 @@
+
+
+digraph structs {
+    Template [label="Manage Objective(管理对象）\n Title(职称) \n Hierachy（层级）", color="red" ] 
+    
+    ManageEnterprise [label="Enterprise（管理全集团） \n Enterprise Manager, CEO（首席执行官） \n Enterprise"]
+    ManageEnterprise -> ManageBusinessGroup
+    ManageEnterprise -> ManageBusinessGroupPlaceHolder
+    
+    ManageBusinessGroup [label="Business Group（管理业务群组）\n Group Executive（集团高管）\n Business Group"]
+    ManageBusinessGroupPlaceHolder [label="Business Group \n ..."]
+    ManageBusinessGroup -> ManageBusiness
+    ManageBusinessGroup -> ManageBusinessPlaceHolder
+    
+    ManageBusiness [label="Business \n Business Manager(事业部总经理) \n Business Unit"]
+    ManageBusinessPlaceHolder [label="Business \n ..."]
+    ManageBusiness -> ManageFunction
+    ManageBusiness -> ManageFunctionPlaceHolder
+    
+    ManageFunction [label="Function \n Functional Manager（事业部副总经理） \n Division"]
+    ManageFunctionPlaceHolder [label="Function..."]
+    ManageFunction -> ManageManagers
+    ManageFunction -> ManageManagersPlacehold
+    
+    ManageManagers [label="Managers（管理经理人员） \n Director（部门总监） \n Department" ]
+    ManageManagersPlacehold [label="Managers..." ]
+    ManageManagers -> ManageOthers
+    ManageManagers -> ManageOthersPlaceHolder
+    
+    ManageOthers [label="Others（管理他人） \n  Manager（一线经理） \n Group"]
+    ManageOthersPlaceHolder [label="Others \n ..."]
+    ManageOthers -> ManageSelf
+    ManageOthers -> ManageSelPlaceHolder
+    
+    ManageSelf [label="Self（管理自我） \n Individual Contributer(个人贡献者) \n NA"]
+    ManageSelPlaceHolder [label="Self \n ..."]
+}
